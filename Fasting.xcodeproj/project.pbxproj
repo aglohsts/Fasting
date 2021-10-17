@@ -1,0 +1,499 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		722C0D0478A0C8AAB61F20E9 /* Pods_Fasting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97198683733158FF4D1D1B80 /* Pods_Fasting.framework */; };
+		7908673F25D0574400E97CC9 /* FastingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7908673E25D0574400E97CC9 /* FastingModel.swift */; };
+		790A90F425D556D100D520CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 790A90F325D556D100D520CE /* LaunchScreen.storyboard */; };
+		79462EE525D322AD007E96C2 /* HistoryContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79462EE425D322AD007E96C2 /* HistoryContentView.swift */; };
+		79462EE825D33410007E96C2 /* SettingsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79462EE725D33410007E96C2 /* SettingsContentView.swift */; };
+		79462EEB25D33D7D007E96C2 /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79462EEA25D33D7D007E96C2 /* SettingsTabView.swift */; };
+		79462EEE25D33E08007E96C2 /* HistoryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79462EED25D33E08007E96C2 /* HistoryTabView.swift */; };
+		79462EF225D33E6C007E96C2 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79462EF125D33E6C007E96C2 /* AppConfig.swift */; };
+		7949FF8F25CCC58B00210818 /* FastingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949FF8E25CCC58B00210818 /* FastingApp.swift */; };
+		7949FF9125CCC58B00210818 /* WelcomeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949FF9025CCC58B00210818 /* WelcomeContentView.swift */; };
+		7949FF9325CCC58B00210818 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7949FF9225CCC58B00210818 /* Assets.xcassets */; };
+		7949FF9625CCC58B00210818 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7949FF9525CCC58B00210818 /* Preview Assets.xcassets */; };
+		7949FF9F25CCC73600210818 /* QuestionnaireContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949FF9E25CCC73600210818 /* QuestionnaireContentView.swift */; };
+		7949FFA225CCCDD800210818 /* FastingDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949FFA125CCCDD800210818 /* FastingDataManager.swift */; };
+		7949FFA525CCCED900210818 /* DashboardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949FFA425CCCED900210818 /* DashboardContentView.swift */; };
+		7949FFAF25CCCFBD00210818 /* AboutFastingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7949FFAE25CCCFBD00210818 /* AboutFastingContentView.swift */; };
+		7998ECEF25CEFF5200430E68 /* FastingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7998ECEE25CEFF5200430E68 /* FastingTabView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7908673E25D0574400E97CC9 /* FastingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingModel.swift; sourceTree = "<group>"; };
+		790A90F325D556D100D520CE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		79462EE425D322AD007E96C2 /* HistoryContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryContentView.swift; sourceTree = "<group>"; };
+		79462EE725D33410007E96C2 /* SettingsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContentView.swift; sourceTree = "<group>"; };
+		79462EEA25D33D7D007E96C2 /* SettingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
+		79462EED25D33E08007E96C2 /* HistoryTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTabView.swift; sourceTree = "<group>"; };
+		79462EF125D33E6C007E96C2 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		7949FF8B25CCC58A00210818 /* Fasting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fasting.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7949FF8E25CCC58B00210818 /* FastingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingApp.swift; sourceTree = "<group>"; };
+		7949FF9025CCC58B00210818 /* WelcomeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeContentView.swift; sourceTree = "<group>"; };
+		7949FF9225CCC58B00210818 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7949FF9525CCC58B00210818 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7949FF9725CCC58B00210818 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7949FF9E25CCC73600210818 /* QuestionnaireContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireContentView.swift; sourceTree = "<group>"; };
+		7949FFA125CCCDD800210818 /* FastingDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingDataManager.swift; sourceTree = "<group>"; };
+		7949FFA425CCCED900210818 /* DashboardContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardContentView.swift; sourceTree = "<group>"; };
+		7949FFAE25CCCFBD00210818 /* AboutFastingContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutFastingContentView.swift; sourceTree = "<group>"; };
+		7998ECEE25CEFF5200430E68 /* FastingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingTabView.swift; sourceTree = "<group>"; };
+		97198683733158FF4D1D1B80 /* Pods_Fasting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fasting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6C368F0FB9CB0B1621DE461 /* Pods-Fasting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fasting.debug.xcconfig"; path = "Target Support Files/Pods-Fasting/Pods-Fasting.debug.xcconfig"; sourceTree = "<group>"; };
+		CFE32F63203B3052C5967BE7 /* Pods-Fasting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fasting.release.xcconfig"; path = "Target Support Files/Pods-Fasting/Pods-Fasting.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7949FF8825CCC58A00210818 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				722C0D0478A0C8AAB61F20E9 /* Pods_Fasting.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7908673D25D0572A00E97CC9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7908673E25D0574400E97CC9 /* FastingModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		79462EF025D33E62007E96C2 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				79462EF125D33E6C007E96C2 /* AppConfig.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		7949FF8225CCC58A00210818 = {
+			isa = PBXGroup;
+			children = (
+				79462EF025D33E62007E96C2 /* Configuration */,
+				7949FF8D25CCC58B00210818 /* Fasting */,
+				7949FF8C25CCC58A00210818 /* Products */,
+				C20BC3A86496C97585AF557F /* Pods */,
+				B4016EBB4560B4B929B39526 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7949FF8C25CCC58A00210818 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7949FF8B25CCC58A00210818 /* Fasting.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7949FF8D25CCC58B00210818 /* Fasting */ = {
+			isa = PBXGroup;
+			children = (
+				7998ECED25CEFF4400430E68 /* Views */,
+				7908673D25D0572A00E97CC9 /* Models */,
+				7949FFA725CCCF8C00210818 /* Lifecycle */,
+				7949FFAB25CCCF9B00210818 /* Data Managers */,
+				7949FFA925CCCF9500210818 /* Content Views */,
+				7949FF9225CCC58B00210818 /* Assets.xcassets */,
+				7949FF9725CCC58B00210818 /* Info.plist */,
+				7949FF9425CCC58B00210818 /* Preview Content */,
+				790A90F325D556D100D520CE /* LaunchScreen.storyboard */,
+			);
+			path = Fasting;
+			sourceTree = "<group>";
+		};
+		7949FF9425CCC58B00210818 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				7949FF9525CCC58B00210818 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7949FFA725CCCF8C00210818 /* Lifecycle */ = {
+			isa = PBXGroup;
+			children = (
+				7949FF8E25CCC58B00210818 /* FastingApp.swift */,
+			);
+			path = Lifecycle;
+			sourceTree = "<group>";
+		};
+		7949FFA925CCCF9500210818 /* Content Views */ = {
+			isa = PBXGroup;
+			children = (
+				7949FF9025CCC58B00210818 /* WelcomeContentView.swift */,
+				7949FF9E25CCC73600210818 /* QuestionnaireContentView.swift */,
+				7949FFA425CCCED900210818 /* DashboardContentView.swift */,
+				7949FFAE25CCCFBD00210818 /* AboutFastingContentView.swift */,
+				79462EE425D322AD007E96C2 /* HistoryContentView.swift */,
+				79462EE725D33410007E96C2 /* SettingsContentView.swift */,
+			);
+			path = "Content Views";
+			sourceTree = "<group>";
+		};
+		7949FFAB25CCCF9B00210818 /* Data Managers */ = {
+			isa = PBXGroup;
+			children = (
+				7949FFA125CCCDD800210818 /* FastingDataManager.swift */,
+			);
+			path = "Data Managers";
+			sourceTree = "<group>";
+		};
+		7998ECED25CEFF4400430E68 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7998ECEE25CEFF5200430E68 /* FastingTabView.swift */,
+				79462EEA25D33D7D007E96C2 /* SettingsTabView.swift */,
+				79462EED25D33E08007E96C2 /* HistoryTabView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B4016EBB4560B4B929B39526 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97198683733158FF4D1D1B80 /* Pods_Fasting.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C20BC3A86496C97585AF557F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A6C368F0FB9CB0B1621DE461 /* Pods-Fasting.debug.xcconfig */,
+				CFE32F63203B3052C5967BE7 /* Pods-Fasting.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7949FF8A25CCC58A00210818 /* Fasting */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7949FF9A25CCC58B00210818 /* Build configuration list for PBXNativeTarget "Fasting" */;
+			buildPhases = (
+				920D53ACE603030F4B32A208 /* [CP] Check Pods Manifest.lock */,
+				7949FF8725CCC58A00210818 /* Sources */,
+				7949FF8825CCC58A00210818 /* Frameworks */,
+				7949FF8925CCC58A00210818 /* Resources */,
+				44EDEFCDEA9DC6F87FB88053 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Fasting;
+			productName = Fasting;
+			productReference = 7949FF8B25CCC58A00210818 /* Fasting.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7949FF8325CCC58A00210818 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1230;
+				LastUpgradeCheck = 1230;
+				TargetAttributes = {
+					7949FF8A25CCC58A00210818 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+				};
+			};
+			buildConfigurationList = 7949FF8625CCC58A00210818 /* Build configuration list for PBXProject "Fasting" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7949FF8225CCC58A00210818;
+			productRefGroup = 7949FF8C25CCC58A00210818 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7949FF8A25CCC58A00210818 /* Fasting */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7949FF8925CCC58A00210818 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				790A90F425D556D100D520CE /* LaunchScreen.storyboard in Resources */,
+				7949FF9625CCC58B00210818 /* Preview Assets.xcassets in Resources */,
+				7949FF9325CCC58B00210818 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		44EDEFCDEA9DC6F87FB88053 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fasting/Pods-Fasting-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fasting/Pods-Fasting-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fasting/Pods-Fasting-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		920D53ACE603030F4B32A208 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Fasting-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7949FF8725CCC58A00210818 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7949FFA525CCCED900210818 /* DashboardContentView.swift in Sources */,
+				7949FFA225CCCDD800210818 /* FastingDataManager.swift in Sources */,
+				7908673F25D0574400E97CC9 /* FastingModel.swift in Sources */,
+				79462EEE25D33E08007E96C2 /* HistoryTabView.swift in Sources */,
+				7949FF9125CCC58B00210818 /* WelcomeContentView.swift in Sources */,
+				79462EEB25D33D7D007E96C2 /* SettingsTabView.swift in Sources */,
+				79462EE525D322AD007E96C2 /* HistoryContentView.swift in Sources */,
+				7949FFAF25CCCFBD00210818 /* AboutFastingContentView.swift in Sources */,
+				7949FF8F25CCC58B00210818 /* FastingApp.swift in Sources */,
+				7949FF9F25CCC73600210818 /* QuestionnaireContentView.swift in Sources */,
+				79462EF225D33E6C007E96C2 /* AppConfig.swift in Sources */,
+				7998ECEF25CEFF5200430E68 /* FastingTabView.swift in Sources */,
+				79462EE825D33410007E96C2 /* SettingsContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7949FF9825CCC58B00210818 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7949FF9925CCC58B00210818 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7949FF9B25CCC58B00210818 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6C368F0FB9CB0B1621DE461 /* Pods-Fasting.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Fasting/Preview Content\"";
+				DEVELOPMENT_TEAM = JAPVDZ486H;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Fasting/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.a4w.Fasting;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		7949FF9C25CCC58B00210818 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFE32F63203B3052C5967BE7 /* Pods-Fasting.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Fasting/Preview Content\"";
+				DEVELOPMENT_TEAM = JAPVDZ486H;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Fasting/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.a4w.Fasting;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7949FF8625CCC58A00210818 /* Build configuration list for PBXProject "Fasting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7949FF9825CCC58B00210818 /* Debug */,
+				7949FF9925CCC58B00210818 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7949FF9A25CCC58B00210818 /* Build configuration list for PBXNativeTarget "Fasting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7949FF9B25CCC58B00210818 /* Debug */,
+				7949FF9C25CCC58B00210818 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7949FF8325CCC58A00210818 /* Project object */;
+}
