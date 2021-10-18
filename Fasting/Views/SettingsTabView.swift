@@ -53,6 +53,8 @@ struct SettingsTabView: View {
     @State private var showAboutFastingView: Bool = false
     private let columns = [GridItem(.flexible(), spacing: 20), GridItem(.flexible(), spacing: 20)]
     
+    @State var showingUserInputView = false
+    
     // MARK: - Main rendering function
     var body: some View {
         ScrollView {
@@ -63,6 +65,13 @@ struct SettingsTabView: View {
             Divider().padding(30)
             SettingsSection
             Spacer(minLength: 30)
+            Button(action: {
+                showingUserInputView = true
+            }, label: {
+                /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
+            }).sheet(isPresented: $showingUserInputView, content: {
+                UserInfoInputView()
+            })
         }
         .sheet(isPresented: $showAboutFastingView, content: {
             AboutFastingContentView()
