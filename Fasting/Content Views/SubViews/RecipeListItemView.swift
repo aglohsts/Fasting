@@ -33,13 +33,19 @@ struct RecipeListItemView: View {
                 .font(.caption)
                 .fontWeight(.bold)
             }
+            .background(Color.clear)
             
             Button(action: {
                 recipe.isFavorite = !recipe.isFavorite
             }, label: {
-                recipe.isFavorite ? Image(systemName: "star.fill") : Image(systemName: "star")
+                recipe.isFavorite ? Image(systemName: "star.fill").foregroundColor(.orange) : Image(systemName: "star").foregroundColor(.gray)
             })
+            .background(Color.clear)
+            .padding()
         }
+        .background(Color.gray.opacity(0.1))
+        .cornerRadius(10)
+        .padding([.leading, .trailing, .bottom], 10)
     }
 }
 

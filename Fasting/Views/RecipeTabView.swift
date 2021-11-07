@@ -12,10 +12,12 @@ struct RecipeTabView: View {
     
     
     var body: some View {
-        List {
-            ForEach(manager.recipeData) { item in
-                RecipeListItemView(recipe: item)
-                    .padding(.vertical, 8.0)
+//        List {
+        ScrollView {
+            VStack {
+                ForEach(manager.recipeData) { item in
+                    RecipeListItemView(recipe: item)
+                }
             }
         }
     }
