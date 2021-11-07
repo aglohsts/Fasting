@@ -12,7 +12,7 @@ enum TabBarItem: String, CaseIterable {
     case recipe
     case plan
     case home
-    case history
+    case analysis
 //    case settings
     case profile
     
@@ -30,8 +30,8 @@ enum TabBarItem: String, CaseIterable {
             return Image(systemName: "rectangle.and.paperclip")
         case .home:
             return Image(systemName: "house.fill")
-        case .history:
-            return Image(systemName: "list.bullet")
+        case .analysis:
+            return Image(systemName: "chart.bar.xaxis")
 //        case .settings:
 //            return Image(systemName: "gearshape.fill")
         case .profile:
@@ -52,10 +52,10 @@ struct DashboardContentView: View {
     var body: some View {
         NavigationView {
             TabView(selection: $selectedTab) {
-                CreateTabBarItem(view: AnyView(RecipeTabView(manager: manager)), tabItem: .recipe)
+                CreateTabBarItem(view: AnyView(SettingsContentView(manager: manager)), tabItem: .recipe)
                 CreateTabBarItem(view: AnyView(PlanTabView(manager: manager)), tabItem: .plan)
                 CreateTabBarItem(view: AnyView(FastingTabView(manager: manager)), tabItem: .home)
-                CreateTabBarItem(view: AnyView(HistoryContentView(manager: manager)), tabItem: .history)
+                CreateTabBarItem(view: AnyView(HistoryContentView(manager: manager)), tabItem: .analysis)
 //                CreateTabBarItem(view: AnyView(SettingsContentView(manager: manager)), tabItem: .settings)
                 CreateTabBarItem(view: AnyView(ProfileTabView(manager: manager)), tabItem: .profile)
             }

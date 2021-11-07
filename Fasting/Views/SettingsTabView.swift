@@ -59,12 +59,13 @@ struct SettingsTabView: View {
     var body: some View {
         ScrollView {
             Divider().padding()
-            FastingPlansSection
-            Divider().padding(30)
+//            FastingPlansSection
+//            Divider().padding(30)
             NotificationsSection
             Divider().padding(30)
-            SettingsSection
+            GeneralSection
             Spacer(minLength: 30)
+            
             Button(action: {
                 showingUserInputView = true
             }, label: {
@@ -76,37 +77,6 @@ struct SettingsTabView: View {
         .sheet(isPresented: $showAboutFastingView, content: {
             AboutFastingContentView()
         })
-    }
-    
-    /// Fasting plans section
-    private var FastingPlansSection: some View {
-        VStack {
-            Text("Fasting Plans").font(.title2).fontWeight(.medium)
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(FastingPlan.allCases, id: \.self, content: { plan in
-                    Button(action: {
-                        manager.currentFastingPlan = plan
-                        UINotificationFeedbackGenerator().notificationOccurred(.success)
-                    }, label: {
-                        ZStack {
-                            LinearGradient(gradient: plan.planGradient, startPoint: .top, endPoint: .bottom)
-                                .mask(RoundedRectangle(cornerRadius: 20))
-                            HStack {
-                                VStack(alignment: .trailing) {
-                                    Text(plan.rawValue).font(.system(size: 40)).bold().frame(height: 45)
-                                    Text("fast").fontWeight(.light).opacity(0.5)
-                                }.minimumScaleFactor(0.5)
-                                Image(systemName: "clock").padding()
-                                VStack(alignment: .trailing) {
-                                    Text("\(24-Int(plan.rawValue)!)").font(.system(size: 30)).frame(height: 45)
-                                    Text("eat").fontWeight(.light).opacity(0.5)
-                                }
-                            }.foregroundColor(.white).padding([.leading, .trailing])
-                        }.frame(height: UIScreen.main.bounds.width / 4).opacity(plan != manager.currentFastingPlan ? 0.45 : 1.0)
-                    })
-                })
-            }.padding()
-        }
     }
     
     /// Reminders/Notifications section
@@ -128,7 +98,7 @@ struct SettingsTabView: View {
     }
     
     /// Shows basic settings
-    private var SettingsSection: some View {
+    private var GeneralSection: some View {
         VStack {
             Text("General").font(.title2).fontWeight(.medium)
             VStack(alignment: .leading) {
