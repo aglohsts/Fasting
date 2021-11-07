@@ -41,6 +41,16 @@ class FastingDataManager: ObservableObject {
         }
     }
     
+    @Published var recipeData: [Recipe] = [
+        Recipe(image: "icons8-apple-100", title: "Test", description: "testtesttest testtesttest testtesttest testtesttest testtesttest testtesttest", note: "note"),
+        Recipe(image: "icons8-apple-100", title: "Test", description: "testtesttest testtesttest testtesttest testtesttest testtesttest testtesttest", note: "note"),
+        Recipe(image: "icons8-apple-100", title: "Test", description: "testtesttest testtesttest testtesttest testtesttest testtesttest testtesttest", note: "note"),
+        Recipe(image: "icons8-apple-100", title: "Test", description: "testtesttest testtesttest testtesttest testtesttest testtesttest testtesttest", note: "note"),
+        Recipe(image: "icons8-apple-100", title: "Test", description: "testtesttest testtesttest testtesttest testtesttest testtesttest testtesttest", note: "note"),
+        Recipe(image: "icons8-apple-100", title: "Test", description: "testtesttest testtesttest testtesttest testtesttest testtesttest testtesttest", note: "note"),
+        Recipe(image: "icons8-apple-100", title: "Test", description: "testtesttest testtesttest testtesttest testtesttest testtesttest testtesttest", note: "note"),
+    ]
+    
     /// Default initializer
     init() {
         /// Get the current activity that is still tracking the time, after the app was closed

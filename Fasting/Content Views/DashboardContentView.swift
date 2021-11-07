@@ -52,7 +52,7 @@ struct DashboardContentView: View {
     var body: some View {
         NavigationView {
             TabView(selection: $selectedTab) {
-                CreateTabBarItem(view: AnyView(SettingsContentView(manager: manager)), tabItem: .recipe)
+                CreateTabBarItem(view: AnyView(RecipeTabView(manager: manager)), tabItem: .recipe)
                 CreateTabBarItem(view: AnyView(PlanTabView(manager: manager)), tabItem: .plan)
                 CreateTabBarItem(view: AnyView(FastingTabView(manager: manager)), tabItem: .home)
                 CreateTabBarItem(view: AnyView(HistoryContentView(manager: manager)), tabItem: .analysis)
