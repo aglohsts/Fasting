@@ -2,7 +2,7 @@
 //  SectionTitleView.swift
 //  Fasting
 //
-//  Created by Yu-chen chih on 2021/11/7.
+//  Created by lohsts on 2021/11/7.
 //
 
 import SwiftUI

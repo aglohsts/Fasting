@@ -2,7 +2,7 @@
 //  FormLabelView.swift
 //  Fasting
 //
-//  Created by Yu-chen chih on 2021/10/17.
+//  Created by lohsts on 2021/10/17.
 //
 
 import SwiftUI
