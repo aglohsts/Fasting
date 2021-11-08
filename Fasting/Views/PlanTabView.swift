@@ -17,8 +17,10 @@ struct PlanTabView: View {
             Divider().padding()
             ForEach(FastingPlan.allCases, id: \.self, content: { plan in
                 PlanListItemView(planContent: plan.content, backgroundGradient: plan.planGradient)
-                    .padding()
+                    .padding([.leading, .trailing, .bottom])
             })
+            
+            FastingPlansSection
 //            PlanListItemView(plan: Plan(tag: .beginner, name: "test name", description: "test description description description description description description", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail")).padding()
 //            PlanListItemView(plan: Plan(tag: .beginner, name: "test name", description: "test description", detail: "test detail")).padding()
         }

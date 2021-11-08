@@ -10,7 +10,8 @@ import Foundation
 enum PlanLevel: String {
     case beginner
     case intermediate
-    case advanced
+    case hard
+    case alternateDay = "Alternate Day Plan"
 }
 
 class Plan: ObservableObject, Identifiable {

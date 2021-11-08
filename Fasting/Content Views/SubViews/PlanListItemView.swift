@@ -13,12 +13,7 @@ struct PlanListItemView: View {
     var backgroundGradient: Gradient
     
     var body: some View {
-        VStack(alignment: .center, spacing: 4, content: {
-            if isExpanded {
-                
-            } else {
-                
-            }
+        VStack(alignment: .center, spacing: 6, content: {
             HStack {
                 TagView(text: planContent.tag.rawValue.capitalized)
                     .padding([.top, .leading, .trailing])
@@ -29,13 +24,12 @@ struct PlanListItemView: View {
                     planContent.isFavorite.toggle()
                 }, label: {
                     planContent.isFavorite ? Image(systemName: "heart.fill").foregroundColor(.red) : Image(systemName: "heart.fill")
-                        .foregroundColor(.gray.opacity(0.5))
+                        .foregroundColor(.gray.opacity(0.4))
                 })
-                .padding(8)
+                .padding(7)
                 .background(Color.white)
                 .clipShape(Circle())
                 .padding([.top, .trailing])
-                
             }
             
             HStack {
@@ -49,12 +43,17 @@ struct PlanListItemView: View {
             }
             
             HStack {
+                Image(systemName: "clock")
+                    .foregroundColor(.white)
+                    .frame(width: 12, height: 12, alignment: .center)
+                    .padding([.leading])
+                    .padding([.trailing], 6)
                 Text(planContent.description)
                     .fontWeight(.medium)
                     .font(.headline)
                     .foregroundColor(.white)
                     .lineLimit(isExpanded ? nil : 2)
-                    .padding([.leading, .trailing])
+                    .padding([.trailing])
                 Spacer()
             }
             
@@ -85,9 +84,8 @@ struct PlanListItemView: View {
                     .padding([.bottom], 16)
             }
         })
-        .frame(width: (UIScreen.main.bounds.width - 20), height: isExpanded ? (UIScreen.main.bounds.height * 0.4) : 160)
+        .frame(width: (UIScreen.main.bounds.width - 32), height: isExpanded ? (UIScreen.main.bounds.height * 0.4) : 160)
         .background(backgroundView)
-        
         .cornerRadius(30)
         .animation(.spring())
         .shadow(radius: 30)
@@ -105,7 +103,7 @@ struct PlanListItemView: View {
                 Spacer()
                 Text(planContent.name)
                     .fontWeight(.black)
-                    .font(.system(size: 60))
+                    .font(.system(size: 80))
                     .foregroundColor(.white)
                     .opacity(0.1)
                     .padding([.trailing])

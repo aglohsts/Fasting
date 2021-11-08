@@ -32,6 +32,7 @@ struct RecipeListItemView: View {
               Text(recipe.note)
                 .font(.caption)
                 .fontWeight(.bold)
+                .foregroundColor(.gray)
             }
             .background(Color.clear)
             
