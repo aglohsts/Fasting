@@ -51,6 +51,15 @@ class FastingDataManager: ObservableObject {
         Recipe(image: "icons8-apple-100", title: "Test", description: "testtesttest testtesttest testtesttest testtesttest testtesttest testtesttest", note: "note"),
     ]
     
+    @Published var planData: [Plan] = [
+        Plan(tag: .beginner, name: "test name", description: "test description description description description description description", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail"),
+        Plan(tag: .beginner, name: "test name", description: "test description description description description description description", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail"),
+        Plan(tag: .beginner, name: "test name", description: "test description description description description description description", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail"),
+        Plan(tag: .beginner, name: "test name", description: "test description description description description description description", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail"),
+        Plan(tag: .beginner, name: "test name", description: "test description description description description description description", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail"),
+        Plan(tag: .beginner, name: "test name", description: "test description description description description description description", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail"),
+    ]
+    
     /// Default initializer
     init() {
         /// Get the current activity that is still tracking the time, after the app was closed

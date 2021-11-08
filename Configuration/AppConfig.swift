@@ -51,4 +51,17 @@ enum FastingPlan: String, CaseIterable, Identifiable {
             return Gradient(colors: [Color(#colorLiteral(red: 0.9674802608, green: 0.7327492438, blue: 0.4523254982, alpha: 1)), Color(#colorLiteral(red: 0.9159417069, green: 0.6937150248, blue: 0.4282297073, alpha: 1))])
         }
     }
+    
+    var content: Plan {
+        switch self {
+        case .thirteen:
+            return Plan(tag: .beginner, name: "\(rawValue) - \(24 - Int(rawValue)!)", description: "test description description description description description description", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail")
+        case .sixteen:
+            return Plan(tag: .beginner, name: "\(rawValue) - \(24 - Int(rawValue)!)", description: "test description description description description description description", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail")
+        case .eighteen:
+            return Plan(tag: .beginner, name: "\(rawValue) - \(24 - Int(rawValue)!)", description: "test description description description description description description", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail")
+        case .twenty:
+            return Plan(tag: .beginner, name: "\(rawValue) - \(24 - Int(rawValue)!)", description: "test description description description description description description", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail")
+        }
+    }
 }

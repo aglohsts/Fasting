@@ -16,7 +16,7 @@ struct RecipeListItemView: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: 120, height: 120)
-            .background(Color("background"))
+            .background(Color.clear)
             .cornerRadius(20)
 
             VStack(alignment: .leading) {
@@ -35,13 +35,18 @@ struct RecipeListItemView: View {
             }
             .background(Color.clear)
             
-            Button(action: {
-                recipe.isFavorite = !recipe.isFavorite
-            }, label: {
-                recipe.isFavorite ? Image(systemName: "star.fill").foregroundColor(.orange) : Image(systemName: "star").foregroundColor(.gray)
-            })
-            .background(Color.clear)
-            .padding()
+            VStack(alignment: .leading) {
+                Button(action: {
+                    recipe.isFavorite.toggle()
+                }, label: {
+                    recipe.isFavorite ? Image(systemName: "heart.fill").foregroundColor(.red) : Image(systemName: "heart").foregroundColor(.gray)
+                })
+                .background(Color.clear)
+                .padding()
+                
+                Spacer()
+            }
+            
         }
         .background(Color.gray.opacity(0.1))
         .cornerRadius(10)
