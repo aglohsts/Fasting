@@ -88,7 +88,6 @@ struct PlanListItemView: View {
         .background(backgroundView)
         .cornerRadius(30)
         .animation(.spring())
-        .shadow(radius: 30)
         .onTapGesture {
             withAnimation {
                 self.isExpanded.toggle()

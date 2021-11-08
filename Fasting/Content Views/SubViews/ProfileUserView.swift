@@ -19,7 +19,7 @@ struct ProfileUserView: View {
                     .font(.title)
                     .bold()
                     .padding([.bottom], 4)
-                Text("Setting User Name")
+                Text("Set User Name")
                     .foregroundColor(.gray)
             })
             Spacer()
