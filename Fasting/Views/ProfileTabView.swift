@@ -50,9 +50,8 @@ struct ProfileTabView: View {
     var body: some View {
         ScrollView {
             Divider().padding()
+            ProfileUserView()
             SettingSection
-            Divider().padding(30)
-            userInputTestSection
         }
     }
     
@@ -72,31 +71,31 @@ struct ProfileTabView: View {
                 })
                 .navigationTitle("Settings")
             .padding([.leading, .trailing], 15).padding([.top, .bottom], 10)
-            .background(Color(#colorLiteral(red: 0.9568627451, green: 0.9607843137, blue: 0.9607843137, alpha: 1)).cornerRadius(20)).padding([.leading, .trailing])
+            .background(Color(#colorLiteral(red: 0.9568627451, green: 0.9607843137, blue: 0.9607843137, alpha: 1)).cornerRadius(8)).padding([.leading, .trailing])
             
         }
     }
     
-    private var userInputTestSection: some View {
-        
-        VStack {
-            NavigationLink(
-                destination: UserInfoInputView(),
-                label: {
-                    HStack {
-                        Image(systemName: "gearshape.fill").font(.system(size: 20)).frame(width: 30)
-                        Text("UserInfoTestSection")
-                        Spacer()
-                        Image(systemName: "chevron.right").font(.system(size: 20))
-                            
-                    }.foregroundColor(.black)
-                })
-                .navigationTitle("UserInfoTestSection")
-            .padding([.leading, .trailing], 15).padding([.top, .bottom], 10)
-            .background(Color(#colorLiteral(red: 0.9568627451, green: 0.9607843137, blue: 0.9607843137, alpha: 1)).cornerRadius(20)).padding([.leading, .trailing])
-            
-        }
-    }
+//    private var userInputTestSection: some View {
+//
+//        VStack {
+//            NavigationLink(
+//                destination: UserInfoInputView(),
+//                label: {
+//                    HStack {
+//                        Image(systemName: "gearshape.fill").font(.system(size: 20)).frame(width: 30)
+//                        Text("UserInfoTestSection")
+//                        Spacer()
+//                        Image(systemName: "chevron.right").font(.system(size: 20))
+//
+//                    }.foregroundColor(.black)
+//                })
+//                .navigationTitle("UserInfoTestSection")
+//            .padding([.leading, .trailing], 15).padding([.top, .bottom], 10)
+//            .background(Color(#colorLiteral(red: 0.9568627451, green: 0.9607843137, blue: 0.9607843137, alpha: 1)).cornerRadius(20)).padding([.leading, .trailing])
+//
+//        }
+//    }
 }
 
 struct ProfileTabView_Previews: PreviewProvider {
