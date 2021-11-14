@@ -15,10 +15,13 @@ struct PlanTabView: View {
     var body: some View {
         ScrollView {
             Divider().padding()
-            ForEach(FastingPlan.allCases, id: \.self, content: { plan in
-                PlanListItemView(planContent: plan.content, backgroundGradient: plan.planGradient)
-                    .padding([.leading, .trailing, .bottom])
+            ForEach(manager.planData, content: { plan in
+                PlanListItemView(plan: plan)
             })
+//            ForEach(FastingPlan.allCases, id: \.self, content: { plan in
+//                PlanListItemView(planContent: plan.content, backgroundGradient: plan.planGradient)
+//                    .padding([.leading, .trailing, .bottom])
+//            })
         }
     }
     
@@ -33,8 +36,8 @@ struct PlanTabView: View {
                         UINotificationFeedbackGenerator().notificationOccurred(.success)
                     }, label: {
                         ZStack {
-                            LinearGradient(gradient: plan.planGradient, startPoint: .top, endPoint: .bottom)
-                                .mask(RoundedRectangle(cornerRadius: 20))
+//                            LinearGradient(gradient: plan.planGradient, startPoint: .top, endPoint: .bottom)
+//                                .mask(RoundedRectangle(cornerRadius: 20))
                             HStack {
                                 VStack(alignment: .trailing) {
                                     Text(plan.rawValue).font(.system(size: 40)).bold().frame(height: 45)
