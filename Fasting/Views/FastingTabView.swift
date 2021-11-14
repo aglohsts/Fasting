@@ -20,41 +20,20 @@ struct FastingTabView: View {
     var body: some View {
         ScrollView {
             VStack {
-                Divider().padding()
-      
-                /// Show fasting status
-                if manager.isTracking {
-                    VStack(spacing: 10) {
-                        Spacer()
-                        Text("You're fasting!").font(.title).foregroundColor(Color(#colorLiteral(red: 0.3768654466, green: 0.3768654466, blue: 0.3768654466, alpha: 1)))
-                        Divider().padding([.leading, .trailing], 100)
-                        Text("Fasting will end \(manager.fastingModel.formattedFastingEndTime(plan: manager.currentFastingPlan))")
-                            .font(.system(size: 18)).foregroundColor(Color(#colorLiteral(red: 0.3768654466, green: 0.3768654466, blue: 0.3768654466, alpha: 1)))
-                        Spacer()
-                    }
-                }
-                
-                /// Show time since last fast
-                if !manager.isTracking {
-                    VStack(spacing: 10) {
-                        Spacer()
-                        Text("Your Eating Window").font(.title).foregroundColor(Color(#colorLiteral(red: 0.3768654466, green: 0.3768654466, blue: 0.3768654466, alpha: 1)))
-                        Divider().padding([.leading, .trailing], 100)
-                        Text(manager.notFastingModel.formattedCountdown(plan: manager.currentFastingPlan))
-                            .font(.title3).foregroundColor(Color(#colorLiteral(red: 0.3768654466, green: 0.3768654466, blue: 0.3768654466, alpha: 1)))
-                        Spacer()
-                    }
-                }
-            
+                Divider()
+                    .padding()
+                    .padding([.bottom], 16)
                 /// Circular progress view
                 ZStack {
                     ZStack {
                         Circle().strokeBorder(style: StrokeStyle(lineWidth: 30)).foregroundColor(Color(#colorLiteral(red: 0.9408885837, green: 0.9492552876, blue: 0.9408323169, alpha: 1)))
                         LinearGradient(gradient: progressGradient, startPoint: .topLeading, endPoint: .bottomTrailing)
                             .mask(
-                                Circle().trim(from: 0.0, to: CGFloat(min(manager.fastingModel.secondsProgress, 1.0)))
+                                Circle().trim(from: 0.0, to: CGFloat( min(manager.fastingModel.secondsProgress, 1.0)))
                                     .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
-                                    .rotationEffect(Angle(degrees: 270.0)).animation(.linear).padding(15)
+                                    .rotationEffect(Angle(degrees: 270.0))
+                                    .animation(.linear)
+                                    .padding(15)
                             )
                     }.frame(width: circleSize, height: circleSize)
                     
@@ -70,31 +49,66 @@ struct FastingTabView: View {
                             Text(String(format: "%02d", manager.fastingModel.timeComponents.s))
                                 .font(.system(size: 40)).bold().lineLimit(1).minimumScaleFactor(0.5).frame(width: 60)
                         }.multilineTextAlignment(.center)
-                        Capsule().frame(width: 50, height: 5, alignment: .center)
-                            .padding(.bottom).padding(.top, 5).foregroundColor(Color(#colorLiteral(red: 0.8916636705, green: 0.8916636705, blue: 0.8916636705, alpha: 1)))
-                        Button(action: {
-                            UINotificationFeedbackGenerator().notificationOccurred(.success)
-                            manager.isTracking ? manager.stopTrackingActivityTime() : manager.startTrackingActivityTime()
-                        }, label: {
-                            Text(manager.isTracking ? "STOP" : "START").bold().padding([.leading, .trailing], 20).padding([.top, .bottom], 8).foregroundColor(.white)
-                                .background(
-                                    LinearGradient(gradient: manager.isTracking ? stopButtonGradient : startButtonGradient, startPoint: .topLeading, endPoint: .bottomTrailing)
-                                        .mask(RoundedRectangle(cornerRadius: 15))
-                                )
-                        })
+                        
+                        VStack {
+                            Image(systemName: manager.isTracking ? "flame.fill" : "bolt.fill")
+                                .font(.system(size: 30, weight: .bold, design: .default))
+                            
+                            HStack {
+                                Text("ends")
+                                    .font(.system(size: 14))
+                                
+                                if manager.isTracking {
+                                    Text("\(manager.fastingModel.formattedFastingEndTime(plan: manager.currentPlan))")
+                                        .font(.system(size: 14))
+                                } else {
+                                    Text("\(manager.notFastingModel.formattedCountdown(plan: manager.currentPlan))")
+                                        .font(.system(size: 14))
+                                }
+                            }
+                        }
+                        .padding([.top], 16)
+                        
+                        HStack {
+                            Text("Next:")
+                            Text(manager.isTracking ? "Eating" : "Fasting")
+                        }
+                        .padding([.top], 12)
+                        
                     }
                 }.frame(width: circleSize, height: circleSize)
                 
                 /// Fsating plan
                 VStack(spacing: 10) {
-                    Spacer()
                     HStack {
-                        Text("Fasting plan").font(.title2).foregroundColor(Color(#colorLiteral(red: 0.3768654466, green: 0.3768654466, blue: 0.3768654466, alpha: 1)))
-                        Text("\(manager.currentFastingPlan.rawValue):\(24-Int(manager.currentFastingPlan.rawValue)!)")
-                            .font(.title2).foregroundColor(.white)
+                        Text("\(manager.currentPlan.tag.rawValue.capitalized):")
+                            .font(.title2)
+                            .bold()
+                            .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
                             .padding([.leading, .trailing], 10).padding([.top, .bottom], 5)
-                            .background(RoundedRectangle(cornerRadius: 10))
+                        
+                        Text("\(manager.currentPlan.name)")
+                            .font(.title2)
+                            .bold()
+                            .foregroundColor(.black)
                     }
+                    .padding([.top], 16)
+                    .padding([.bottom], 20)
+                    
+                    Capsule().frame(width: 50, height: 5, alignment: .center)
+                        .padding(.bottom).padding(.top, 5).foregroundColor(Color(#colorLiteral(red: 0.8916636705, green: 0.8916636705, blue: 0.8916636705, alpha: 1)))
+                    
+                    Button(action: {
+                        UINotificationFeedbackGenerator().notificationOccurred(.success)
+                        manager.isTracking ? manager.stopTrackingActivityTime() : manager.startTrackingActivityTime()
+                    }, label: {
+                        Text(manager.isTracking ? "STOP" : "START").bold().padding([.leading, .trailing], 20).padding([.top, .bottom], 8).foregroundColor(.white)
+                            .background(
+                                LinearGradient(gradient: manager.isTracking ? stopButtonGradient : startButtonGradient, startPoint: .topLeading, endPoint: .bottomTrailing)
+                                    .mask(RoundedRectangle(cornerRadius: 15))
+                            )
+                    })
+                    
                     Spacer()
                 }
             }.frame(height: UIScreen.main.bounds.height - 195)

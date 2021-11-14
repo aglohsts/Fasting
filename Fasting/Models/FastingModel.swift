@@ -17,6 +17,7 @@ enum FastingStatus: String, CaseIterable {
 /// Represents the fasting data
 class FastingModel: ObservableObject {
     
+    var totalHours: Int = 24
     var secondsTracked: Int = 0
     var type: FastingStatus
     var isTracking: Bool = false
@@ -39,7 +40,12 @@ class FastingModel: ObservableObject {
     
     /// Seconds progress
     var secondsProgress: Float {
-        Float(timeComponents.s) / 60.0
+        let totalTime = Float(timeComponents.h * 24 * 60 + timeComponents.m * 60 + timeComponents.s)
+        return totalTime / (Float(totalHours) * 24 * 60)
+    }
+    
+    var minutesProgress: Float {
+        return Float(timeComponents.m)
     }
     
     /// Get today's tracked time
@@ -64,9 +70,14 @@ class FastingModel: ObservableObject {
     }
     
     /// Formatted fasting end time
-    func formattedFastingEndTime(plan: FastingPlan) -> String {
+    func formattedFastingEndTime(plan: Plan) -> String {
         if !fastingEndTime.isEmpty { return fastingEndTime }
-        let endDateTime = Calendar.current.date(byAdding: .hour, value: Int(plan.rawValue)!, to: Date())
+        
+        let fasting = Int(plan.content.rawValue)!
+        let eating = Int(plan.content.rawValue)!
+        let total = fasting + eating
+        
+        let endDateTime = Calendar.current.date(byAdding: .hour, value: fasting, to: Date())
         let components = Calendar.current.dateComponents([.day, .hour, .minute], from: endDateTime!)
         let currentDateComponents = Calendar.current.dateComponents([.day, .hour, .minute], from: Date())
         let dayFastingEnds = (components.day ?? 0 > currentDateComponents.day ?? 0) ? "tomorrow" : "today"
@@ -79,8 +90,12 @@ class FastingModel: ObservableObject {
     }
     
     /// Eating window countdown
-    func formattedCountdown(plan: FastingPlan) -> String {
-        let planEatingWindowSeconds = (24-Int(plan.rawValue)!) * 3600
+    func formattedCountdown(plan: Plan) -> String {
+        let fasting = Int(plan.content.rawValue)!
+        let eating = Int(plan.content.rawValue)!
+        let total = fasting + eating
+        
+        let planEatingWindowSeconds = eating * 3600
         let elapsedTime = planEatingWindowSeconds - secondsTracked
         if secondsTracked > planEatingWindowSeconds { return "00:00:00" }
         return String(format: "%02d:%02d:%02d", elapsedTime / 3600, (elapsedTime % 3600) / 60, (elapsedTime % 3600) % 60)

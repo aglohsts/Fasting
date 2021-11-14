@@ -17,17 +17,13 @@ enum PlanLevel: String {
 
 class Plan: ObservableObject, Identifiable {
     let id: String
-    let tag: PlanLevel
     let content: PlanContent
-    let detail: String
     @Published var isFavorite: Bool = false
     @Published var isChosen: Bool = false
     
-    init(id: String = UUID().uuidString, tag: PlanLevel, content: PlanContent, detail: String) {
+    init(id: String = UUID().uuidString, content: PlanContent) {
         self.id = id
-        self.tag = tag
         self.content = content
-        self.detail = detail
     }
     
     var gradient: Gradient {
@@ -43,22 +39,59 @@ class Plan: ObservableObject, Identifiable {
         }
     }
     
+    var tag: PlanLevel {
+        switch content {
+        case .thirteen: return .beginner
+        case .sixteen: return .beginner
+        case .eighteen: return .intermediate
+        case .twenty: return .hard
+        case .alternateDay: return .alternateDay
+        }
+    }
+    
     var name: String {
-        return "\(self.content.fasting) - \(self.content.eating)"
+        let fasting = Int(self.content.rawValue)!
+        let total = content.totalHours
+        let eating = total - Int(self.content.rawValue)!
+        
+        return "\(fasting) - \(eating)"
     }
     
     var description: String {
-        return "\(self.content.fasting)-hour fasting, \(self.content.eating)-hour eating."
+        let fasting = Int(self.content.rawValue)!
+        let total = content.totalHours
+        let eating = total - Int(self.content.rawValue)!
+        return "\(fasting)-hour fasting, \(eating)-hour eating in \(content.totalHours) hours."
+    }
+    
+    var detail: String {
+        return content.detail
     }
 }
 
-class PlanContent {
-    let fasting: Int
-    let eating: Int
+enum PlanContent: String, CaseIterable, Identifiable {
+    case thirteen = "13"
+    case sixteen = "16"
+    case eighteen = "18"
+    case twenty = "20"
+    case alternateDay = "36"
+    var id: Int { hashValue }
     
-    init(fasting: Int, eating: Int) {
-        self.fasting = fasting
-        self.eating = eating
+    var detail: String {
+        switch self {
+        case .thirteen: return ""
+        case .sixteen: return ""
+        case .eighteen: return ""
+        case .twenty: return ""
+        case .alternateDay: return ""
+        }
+    }
+    
+    var totalHours: Int {
+        switch self {
+        case .alternateDay: return 48
+        default: return 24
+        }
     }
 }
 

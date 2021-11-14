@@ -31,11 +31,14 @@ struct PlanListItemView: View {
                     
                     plan.isChosen.toggle()
                 }, label: {
-                    plan.isChosen ? Image(systemName: "stop.fill").foregroundColor(.red) : Image(systemName: "play.fill")
-                        .foregroundColor(.gray.opacity(0.4))
+//                    plan.isChosen ? Image(systemName: "checkmark").foregroundColor(.red) : Image(systemName: "checkmark")
+//                        .foregroundColor(.gray.opacity(0.4))
+                    Image(systemName: "checkmark")
+                    .foregroundColor(.white)
                 })
                 .frame(width: 16, height: 16, alignment: .center)
                 .padding(7)
+                .background(plan.isChosen ? Color.red : Color.gray.opacity(0.4))
                 .background(Color.white)
                 .clipShape(Circle())
                 .padding([.top])
@@ -74,7 +77,7 @@ struct PlanListItemView: View {
                     .fontWeight(.medium)
                     .font(.headline)
                     .foregroundColor(.white)
-                    .lineLimit(isExpanded ? nil : 2)
+                    .lineLimit(isExpanded ? nil : 3)
                     .padding([.trailing])
                 Spacer()
             })
@@ -107,7 +110,9 @@ struct PlanListItemView: View {
                     
                     plan.isChosen.toggle()
                 }, label: {
-                    plan.isChosen ? TagView(text: "Stop") : TagView(text: "Start")
+                    if !plan.isChosen {
+                        TagView(text: "Choose")
+                    }
                 })
                 .padding([.bottom])
                 
@@ -122,7 +127,7 @@ struct PlanListItemView: View {
                     .padding([.bottom], 16)
             }
         })
-        .frame(width: (UIScreen.main.bounds.width - 32), height: isExpanded ? (UIScreen.main.bounds.height * 0.4) : 160)
+        .frame(width: (UIScreen.main.bounds.width - 32), height: isExpanded ? (UIScreen.main.bounds.height * 0.4) : 190)
         .background(backgroundView)
         .cornerRadius(30)
         .animation(.spring())
@@ -156,6 +161,6 @@ struct PlanListItemView: View {
 
 struct PlanListItemView_Previews: PreviewProvider {
     static var previews: some View {
-        PlanListItemView(manager: FastingDataManager(), plan: Plan(tag: .beginner, content: PlanContent(fasting: 13, eating: 11), detail: "detail"))
+        PlanListItemView(manager: FastingDataManager(), plan: Plan(content: .thirteen))
     }
 }

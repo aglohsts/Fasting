@@ -30,6 +30,13 @@ class FastingDataManager: ObservableObject {
         }
     }
     
+    @Published var currentPlan: Plan = Plan(content: .thirteen) {
+        didSet {
+            UserDefaults.standard.setValue(currentPlan.content.rawValue, forKey: "currentFastingPlan")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
     @Published var notificationsStatus: Bool = false {
         didSet { savePushNotificationsStatus(notificationsStatus) }
     }
@@ -52,17 +59,11 @@ class FastingDataManager: ObservableObject {
     ]
     
     @Published var planData: [Plan] = [
-        Plan(tag: .beginner, content: PlanContent(fasting: 13, eating: 11), detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail"),
-        Plan(tag: .beginner, content: PlanContent(fasting: 16, eating: 8), detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail"),
-        Plan(tag: .intermediate, content: PlanContent(fasting: 18, eating: 6), detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail"),
-        Plan(tag: .hard, content: PlanContent(fasting: 20, eating: 4), detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail"),
-        Plan(tag: .alternateDay, content: PlanContent(fasting: 36, eating: 12), detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail"),
-//        Plan(tag: .beginner, name: "test name", description: "test description description description description description description", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail"),
-//        Plan(tag: .beginner, name: "test name", description: "test description description description description description description", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail"),
-//        Plan(tag: .beginner, name: "test name", description: "test description description description description description description", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail"),
-//        Plan(tag: .beginner, name: "test name", description: "test description description description description description description", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail"),
-//        Plan(tag: .beginner, name: "test name", description: "test description description description description description description", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail"),
-//        Plan(tag: .beginner, name: "test name", description: "test description description description description description description", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail"),
+        Plan(content: .thirteen),
+        Plan(content: .sixteen),
+        Plan(content: .eighteen),
+        Plan(content: .twenty),
+        Plan(content: .alternateDay),
     ]
     
     /// Default initializer
@@ -81,6 +82,18 @@ class FastingDataManager: ObservableObject {
         }
         if let plan = UserDefaults.standard.string(forKey: "fastingPlan") {
             currentFastingPlan = FastingPlan(rawValue: plan) ?? .thirteen
+        }
+        if let _currentPlan = UserDefaults.standard.string(forKey: "currentFastingPlan") {
+            planData.forEach { plan in
+                if plan.content.rawValue == _currentPlan {
+                    plan.isChosen = true
+                }
+            }
+            currentPlan = Plan(content: PlanContent(rawValue: _currentPlan) ?? .thirteen)
+        } else {
+            guard let plan = planData.first else { return }
+            plan.isChosen = true
+            currentPlan = plan
         }
         fetchPushNotificationsStatus()
     }
