@@ -30,7 +30,7 @@ class FastingDataManager: ObservableObject {
         }
     }
     
-    @Published var currentPlan: Plan = Plan(content: .thirteen) {
+    @Published var currentPlan: Plan = Plan(content: .fourteen) {
         didSet {
             UserDefaults.standard.setValue(currentPlan.content.rawValue, forKey: "currentFastingPlan")
             UserDefaults.standard.synchronize()
@@ -57,7 +57,7 @@ class FastingDataManager: ObservableObject {
     ]
     
     @Published var planData: [Plan] = [
-        Plan(content: .thirteen),
+        Plan(content: .fourteen),
         Plan(content: .sixteen),
         Plan(content: .eighteen),
         Plan(content: .twenty),
@@ -87,7 +87,7 @@ class FastingDataManager: ObservableObject {
                     plan.isChosen = true
                 }
             }
-            currentPlan = Plan(content: PlanContent(rawValue: _currentPlan) ?? .thirteen)
+            currentPlan = Plan(content: PlanContent(rawValue: _currentPlan) ?? .fourteen)
         } else {
             guard let plan = planData.first else { return }
             plan.isChosen = true

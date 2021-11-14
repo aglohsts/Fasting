@@ -41,7 +41,7 @@ class Plan: ObservableObject, Identifiable {
     
     var tag: PlanLevel {
         switch content {
-        case .thirteen: return .beginner
+        case .fourteen: return .beginner
         case .sixteen: return .beginner
         case .eighteen: return .intermediate
         case .twenty: return .hard
@@ -70,7 +70,7 @@ class Plan: ObservableObject, Identifiable {
 }
 
 enum PlanContent: String, CaseIterable, Identifiable {
-    case thirteen = "13"
+    case fourteen = "14"
     case sixteen = "16"
     case eighteen = "18"
     case twenty = "20"
@@ -79,11 +79,16 @@ enum PlanContent: String, CaseIterable, Identifiable {
     
     var detail: String {
         switch self {
-        case .thirteen: return ""
-        case .sixteen: return ""
-        case .eighteen: return ""
-        case .twenty: return ""
-        case .alternateDay: return ""
+        case .fourteen:
+            return "For 14:10 intermittent fasting, you will fast for 14 hours and have a 10-hour window for eating."
+        case .sixteen:
+            return "16:8 intermittent fasting means that you fast for 16 hours and eat for 8 hours, with no breakfast. It is recommended to eat two meals between 12:00 and 20:00. "
+        case .eighteen:
+            return "This type of fasting, which is the main topic of this article, is similar to the 16:8 intermittent fasting, only the difference is that your eating window is smaller, so you have to manage to consume all your calories for 6 hours of your day."
+        case .twenty:
+            return "This involves a 4-hour eating window and a 20-hour fast. For example, you might eat between 2:00 pm and 6:00 pm every day and fast for the other 20 hours. This would involve eating either one large, lengthy meal or two smaller meals within this period."
+        case .alternateDay:
+            return "It is as simple as it sounds. You eat your regular diet for a day, then restrict your energy intake the next day."
         }
     }
     

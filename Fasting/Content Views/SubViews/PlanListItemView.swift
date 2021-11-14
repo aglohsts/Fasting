@@ -27,12 +27,10 @@ struct PlanListItemView: View {
                                 $0.isChosen = false
                             }
                         }
+                        plan.isChosen.toggle()
+                        manager.currentPlan = plan
                     }
-                    
-                    plan.isChosen.toggle()
                 }, label: {
-//                    plan.isChosen ? Image(systemName: "checkmark").foregroundColor(.red) : Image(systemName: "checkmark")
-//                        .foregroundColor(.gray.opacity(0.4))
                     Image(systemName: "checkmark")
                     .foregroundColor(.white)
                 })
@@ -74,7 +72,7 @@ struct PlanListItemView: View {
                     .padding([.leading])
                     .padding([.trailing], 6)
                 Text(plan.description)
-                    .fontWeight(.medium)
+                    .fontWeight(.bold)
                     .font(.headline)
                     .foregroundColor(.white)
                     .lineLimit(isExpanded ? nil : 3)
@@ -86,15 +84,13 @@ struct PlanListItemView: View {
                 HStack {
                     Text(plan.detail)
                         .fontWeight(.regular)
-                        .font(.headline)
+                        .font(.system(size: 16))
                         .foregroundColor(.white)
                         .lineLimit(nil)
                         .padding()
                     Spacer()
                 }
             }
-            
-            Spacer()
             
             if isExpanded {
                 Spacer()
@@ -109,6 +105,7 @@ struct PlanListItemView: View {
                     }
                     
                     plan.isChosen.toggle()
+                    manager.currentPlan = plan
                 }, label: {
                     if !plan.isChosen {
                         TagView(text: "Choose")
@@ -121,13 +118,14 @@ struct PlanListItemView: View {
                     .padding([.top], 4)
                     .padding([.bottom], 16)
             } else {
+                Spacer()
                 Image(systemName: "chevron.compact.down")
                     .foregroundColor(.white)
                     .padding([.top], 4)
                     .padding([.bottom], 16)
             }
         })
-        .frame(width: (UIScreen.main.bounds.width - 32), height: isExpanded ? (UIScreen.main.bounds.height * 0.4) : 190)
+        .frame(width: (UIScreen.main.bounds.width - 32), height: isExpanded ? (UIScreen.main.bounds.height * 0.5) : 190)
         .background(backgroundView)
         .cornerRadius(30)
         .animation(.spring())
@@ -161,6 +159,6 @@ struct PlanListItemView: View {
 
 struct PlanListItemView_Previews: PreviewProvider {
     static var previews: some View {
-        PlanListItemView(manager: FastingDataManager(), plan: Plan(content: .thirteen))
+        PlanListItemView(manager: FastingDataManager(), plan: Plan(content: .fourteen))
     }
 }
