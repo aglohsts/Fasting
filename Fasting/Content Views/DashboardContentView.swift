@@ -46,7 +46,7 @@ struct DashboardContentView: View {
     @ObservedObject var manager: FastingDataManager
     @State private var selectedTab: TabBarItem = .home
     @State private var didShowAds: Bool = false
-    let interstitial: Interstitial
+//    let interstitial: Interstitial
     
     // MARK: - Main rendering function
     var body: some View {
@@ -69,7 +69,7 @@ struct DashboardContentView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 if !didShowAds {
                     didShowAds = true
-                    interstitial.showInterstitialAds()
+//                    interstitial.showInterstitialAds()
                 }
             }
         })
@@ -87,6 +87,6 @@ struct DashboardContentView: View {
 // MARK: - Render preview UI
 struct DashboardContentView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardContentView(manager: FastingDataManager(), interstitial: Interstitial(previewMode: true))
+        DashboardContentView(manager: FastingDataManager())
     }
 }
