@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct PlanListItemView: View {
+    @ObservedObject var manager: FastingDataManager
     @State var isExpanded = false
     @StateObject var plan: Plan
-//    var backgroundGradient: Gradient
     
     var body: some View {
         VStack(alignment: .center, spacing: 6, content: {
@@ -21,11 +21,32 @@ struct PlanListItemView: View {
                 Spacer()
                 
                 Button(action: {
+                    if !plan.isChosen {
+                        manager.planData.forEach {
+                            if $0.isChosen {
+                                $0.isChosen = false
+                            }
+                        }
+                    }
+                    
+                    plan.isChosen.toggle()
+                }, label: {
+                    plan.isChosen ? Image(systemName: "stop.fill").foregroundColor(.red) : Image(systemName: "play.fill")
+                        .foregroundColor(.gray.opacity(0.4))
+                })
+                .frame(width: 16, height: 16, alignment: .center)
+                .padding(7)
+                .background(Color.white)
+                .clipShape(Circle())
+                .padding([.top])
+                
+                Button(action: {
                     plan.isFavorite.toggle()
                 }, label: {
                     plan.isFavorite ? Image(systemName: "heart.fill").foregroundColor(.red) : Image(systemName: "heart.fill")
                         .foregroundColor(.gray.opacity(0.4))
                 })
+                .frame(width: 16, height: 16, alignment: .center)
                 .padding(7)
                 .background(Color.white)
                 .clipShape(Circle())
@@ -74,6 +95,22 @@ struct PlanListItemView: View {
             
             if isExpanded {
                 Spacer()
+                
+                Button(action: {
+                    if !plan.isChosen {
+                        manager.planData.forEach {
+                            if $0.isChosen {
+                                $0.isChosen = false
+                            }
+                        }
+                    }
+                    
+                    plan.isChosen.toggle()
+                }, label: {
+                    plan.isChosen ? TagView(text: "Stop") : TagView(text: "Start")
+                })
+                .padding([.bottom])
+                
                 Image(systemName: "chevron.compact.up")
                     .foregroundColor(.white)
                     .padding([.top], 4)
@@ -119,7 +156,6 @@ struct PlanListItemView: View {
 
 struct PlanListItemView_Previews: PreviewProvider {
     static var previews: some View {
-//        PlanListItemView(planContent: Plan(tag: .beginner, name: "test name", description: "test description description description description description description description description ", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail"), backgroundGradient: Gradient(colors: [Color(#colorLiteral(red: 0.4847264653, green: 0.4169784902, blue: 0.6716101926, alpha: 1)), Color(#colorLiteral(red: 0.3965855241, green: 0.3398780823, blue: 0.5469947457, alpha: 1))])).previewLayout(.sizeThatFits)
-        Text("")
+        PlanListItemView(manager: FastingDataManager(), plan: Plan(tag: .beginner, content: PlanContent(fasting: 13, eating: 11), detail: "detail"))
     }
 }

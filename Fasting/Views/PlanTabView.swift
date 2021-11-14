@@ -16,12 +16,9 @@ struct PlanTabView: View {
         ScrollView {
             Divider().padding()
             ForEach(manager.planData, content: { plan in
-                PlanListItemView(plan: plan)
+                PlanListItemView(manager: manager, plan: plan)
+                    .padding([.leading, .trailing, .bottom])
             })
-//            ForEach(FastingPlan.allCases, id: \.self, content: { plan in
-//                PlanListItemView(planContent: plan.content, backgroundGradient: plan.planGradient)
-//                    .padding([.leading, .trailing, .bottom])
-//            })
         }
     }
     

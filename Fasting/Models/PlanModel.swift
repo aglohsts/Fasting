@@ -18,19 +18,15 @@ enum PlanLevel: String {
 class Plan: ObservableObject, Identifiable {
     let id: String
     let tag: PlanLevel
-    let name: String
     let content: PlanContent
-    let description: String
     let detail: String
     @Published var isFavorite: Bool = false
     @Published var isChosen: Bool = false
     
-    init(id: String = UUID().uuidString, tag: PlanLevel, name: String, content: PlanContent, description: String, detail: String) {
+    init(id: String = UUID().uuidString, tag: PlanLevel, content: PlanContent, detail: String) {
         self.id = id
         self.tag = tag
-        self.name = name
         self.content = content
-        self.description = description
         self.detail = detail
     }
     
@@ -46,13 +42,21 @@ class Plan: ObservableObject, Identifiable {
             return Gradient(colors: [Color(#colorLiteral(red: 0.9674802608, green: 0.7327492438, blue: 0.4523254982, alpha: 1)), Color(#colorLiteral(red: 0.9159417069, green: 0.6937150248, blue: 0.4282297073, alpha: 1))])
         }
     }
+    
+    var name: String {
+        return "\(self.content.fasting) - \(self.content.eating)"
+    }
+    
+    var description: String {
+        return "\(self.content.fasting)-hour fasting, \(self.content.eating)-hour eating."
+    }
 }
 
 class PlanContent {
-    let fasting: Double
-    let eating: Double
+    let fasting: Int
+    let eating: Int
     
-    init(fasting: Double, eating: Double) {
+    init(fasting: Int, eating: Int) {
         self.fasting = fasting
         self.eating = eating
     }
@@ -66,31 +70,4 @@ enum FastingPlan: String, CaseIterable, Identifiable {
     case twenty = "20"
     case alternateDay = "36"
     var id: Int { hashValue }
-    
-    
-    
-//    var content: Plan {
-//        switch self {
-//        case .thirteen:
-//            let fast = rawValue
-//            let eat = 24 - Int(rawValue)!
-//            return Plan(tag: .beginner, name: "\(fast) - \(eat)", description: "\(fast)-hour fasting, \(eat)-hour eating.", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail")
-//        case .sixteen:
-//            let fast = rawValue
-//            let eat = 24 - Int(rawValue)!
-//            return Plan(tag: .intermediate, name: "\(fast) - \(eat)", description: "\(fast)-hour fasting, \(eat)-hour eating.", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail")
-//        case .eighteen:
-//            let fast = rawValue
-//            let eat = 24 - Int(rawValue)!
-//            return Plan(tag: .intermediate, name: "\(fast) - \(eat)", description: "\(fast)-hour fasting, \(eat)-hour eating.", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail")
-//        case .twenty:
-//            let fast = rawValue
-//            let eat = 24 - Int(rawValue)!
-//            return Plan(tag: .hard, name: "\(fast) - \(eat)", description: "\(fast)-hour fasting, \(eat)-hour eating.", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail")
-//        case .alternateDay:
-//            let fast = rawValue
-//            let eat = 24 * 2 - Int(rawValue)!
-//            return Plan(tag: .alternateDay, name: "\(fast) - \(eat)", description: "\(fast)-hour fasting, \(eat)-hour eating.", detail: "test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail test detail")
-//        }
-//    }
 }
