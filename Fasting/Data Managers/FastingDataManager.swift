@@ -49,13 +49,11 @@ class FastingDataManager: ObservableObject {
     }
     
     @Published var recipeData: [Recipe] = [
-        Recipe(image: "icons8-apple-100", title: "Test", description: "testtesttest testtesttest testtesttest testtesttest testtesttest testtesttest", note: "note"),
-        Recipe(image: "icons8-apple-100", title: "Test", description: "testtesttest testtesttest testtesttest testtesttest testtesttest testtesttest", note: "note"),
-        Recipe(image: "icons8-apple-100", title: "Test", description: "testtesttest testtesttest testtesttest testtesttest testtesttest testtesttest", note: "note"),
-        Recipe(image: "icons8-apple-100", title: "Test", description: "testtesttest testtesttest testtesttest testtesttest testtesttest testtesttest", note: "note"),
-        Recipe(image: "icons8-apple-100", title: "Test", description: "testtesttest testtesttest testtesttest testtesttest testtesttest testtesttest", note: "note"),
-        Recipe(image: "icons8-apple-100", title: "Test", description: "testtesttest testtesttest testtesttest testtesttest testtesttest testtesttest", note: "note"),
-        Recipe(image: "icons8-apple-100", title: "Test", description: "testtesttest testtesttest testtesttest testtesttest testtesttest testtesttest", note: "note"),
+        Recipe(imageName: "recipe_sabudana_khichdi", title: "Sabudana Khichdi", description: "Sabudana ki khichdi is a delicious dish of tapioca pearls (sago) made with potatoes, peanuts and usually had during Hindu fasting days like Navratri, Ekadashi, mahashivratri. It is also a gluten free recipe. In this recipe post, you will get many tips and suggestions to make the best non-sticky sabudana khichdi. ", note: "Bread & Grains", source: "https://www.vegrecipesofindia.com/navratri-recipes-navratri-fasting-recipes", meal: .lunchOrdinner),
+        Recipe(imageName: "recipe_grilled_lemon_salmon", title: "GRILLED LEMON SALMON", description: "Having lemon in the name of the recipe really threw me, but it was fantastic! I served it alongside pineapple rice and fresh green beans, making it a very satisfying meal!", note: "Protein", source: "https://www.food.com/recipe/grilled-lemon-salmon-30469", meal: .lunchOrdinner),
+        Recipe(imageName: "recipe_veggie_packed_chessy_chicken_salad", title: "VEGGIE-PACKED CHEESY CHICKEN SALAD", description: "This is so yummy! I cook up a bunch of chicken at the beginning of the week for use in salads and such. That worked great for this recipe! I put it on whole wheat bread. What a healthy, yummy sandwich!", note: "Salad", source: "https://www.food.com/recipe/veggie-packed-cheesy-chicken-salad-reduced-fat-279361", meal: .breakfast),
+        Recipe(imageName: "recipe_roasted_cauliflower", title: "CAULIFLOWER POPCORN - ROASTED CAULIFLOWER", description: "Just the idea of being able to eat ‘popcorn’ again, even if it is cauliflower!", note: "Vegetables", source: "https://www.food.com/recipe/cauliflower-popcorn-roasted-cauliflower-115153", meal: .lunchOrdinner),
+        Recipe(imageName: "recipe_boiled_eggs", title: "THE EASIEST HARD BOILED EGGS", description: "I wanted to make deviled eggs for thanksgiving dinner but I usually don’t have very good success at boiling the eggs. I tried this method, and it worked out great! I did, however, have one problem - there wasn’t enough room on the platter for all the eggs that turned out wonderfully!", note: "Protein", source: "https://www.food.com/recipe/the-easiest-perfect-hard-boiled-eggs-technique-302972", meal: .breakfast),
     ]
     
     @Published var planData: [Plan] = [

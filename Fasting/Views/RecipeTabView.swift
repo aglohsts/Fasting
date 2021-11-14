@@ -16,12 +16,12 @@ struct RecipeTabView: View {
             Divider()
                 .padding()
             VStack {
-                ForEach(manager.recipeData) { item in
+                ForEach(manager.recipeData) { recipe in
                     NavigationLink(
-                        destination: Text("push view"),
+                        destination: RecipeDetailContentView(recipe: recipe),
                         label: {
-                            RecipeListItemView(recipe: item)
-                        }).navigationTitle("Title")
+                            RecipeListItemView(recipe: recipe)
+                        }).navigationTitle(recipe.title)
                 }
             }
         }

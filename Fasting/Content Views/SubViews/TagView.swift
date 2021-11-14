@@ -9,14 +9,16 @@ import SwiftUI
 
 struct TagView: View {
     var text: String
+    var textColor: Color = .gray
+    var backgroundColor: Color = .white
     var body: some View {
         Text(text)
-            .foregroundColor(Color.gray)
+            .foregroundColor(textColor)
             .fontWeight(.bold)
             .font(.system(size: 14))
             .padding([.leading, .trailing], 10)
             .padding([.top, .bottom], 6)
-            .background(Color.white)
+            .background(backgroundColor)
             .cornerRadius(14)
             .clipped()
     }

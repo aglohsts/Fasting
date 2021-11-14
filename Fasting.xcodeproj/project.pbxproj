@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A084616274159FF00F024BC /* RecipeDetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A084615274159FF00F024BC /* RecipeDetailContentView.swift */; };
 		1A3B3B17272FF224001D4905 /* RecipeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B3B16272FF224001D4905 /* RecipeTabView.swift */; };
 		1A3B3B19272FF24C001D4905 /* ProfileTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B3B18272FF24C001D4905 /* ProfileTabView.swift */; };
 		1A3B3B1D27302E66001D4905 /* ProfileContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B3B1C27302E66001D4905 /* ProfileContentView.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A084615274159FF00F024BC /* RecipeDetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailContentView.swift; sourceTree = "<group>"; };
 		1A3B3B16272FF224001D4905 /* RecipeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTabView.swift; sourceTree = "<group>"; };
 		1A3B3B18272FF24C001D4905 /* ProfileTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabView.swift; sourceTree = "<group>"; };
 		1A3B3B1C27302E66001D4905 /* ProfileContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContentView.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				79462EE425D322AD007E96C2 /* HistoryContentView.swift */,
 				79462EE725D33410007E96C2 /* SettingsContentView.swift */,
 				1A3B3B1C27302E66001D4905 /* ProfileContentView.swift */,
+				1A084615274159FF00F024BC /* RecipeDetailContentView.swift */,
 				1A7B6B6D271C411E001E9275 /* UserInfoInputView */,
 			);
 			path = "Content Views";
@@ -358,6 +361,7 @@
 				1A3B3B19272FF24C001D4905 /* ProfileTabView.swift in Sources */,
 				7949FF9125CCC58B00210818 /* WelcomeContentView.swift in Sources */,
 				79462EEB25D33D7D007E96C2 /* SettingsTabView.swift in Sources */,
+				1A084616274159FF00F024BC /* RecipeDetailContentView.swift in Sources */,
 				1A7B6B69271BF79E001E9275 /* UserInfoInputView.swift in Sources */,
 				79462EE525D322AD007E96C2 /* HistoryContentView.swift in Sources */,
 				7949FFAF25CCCFBD00210818 /* AboutFastingContentView.swift in Sources */,
