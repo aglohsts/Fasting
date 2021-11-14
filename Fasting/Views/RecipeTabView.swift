@@ -12,13 +12,16 @@ struct RecipeTabView: View {
     
     
     var body: some View {
-//        List {
         ScrollView {
             Divider()
                 .padding()
             VStack {
                 ForEach(manager.recipeData) { item in
-                    RecipeListItemView(recipe: item)
+                    NavigationLink(
+                        destination: Text("push view"),
+                        label: {
+                            RecipeListItemView(recipe: item)
+                        }).navigationTitle("Title")
                 }
             }
         }
