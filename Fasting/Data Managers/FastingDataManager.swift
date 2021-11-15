@@ -78,6 +78,24 @@ class FastingDataManager: ObservableObject {
         }
     }
     
+    /// User Info
+    @Published var userInfo: UserInfo = UserInfo()
+    
+    func saveUserInfo() {
+        if let encodedUserInfoData = try? JSONEncoder().encode(userInfo) {
+            UserDefaults.standard.set(encodedUserInfoData, forKey: "userInfo")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    func getUserInfo() -> UserInfo {
+        if let data = UserDefaults.standard.object(forKey: "userInfo") as? Data,
+            let userInfo = try? JSONDecoder().decode(UserInfo.self, from: data) {
+            return userInfo
+        }
+        return UserInfo()
+    }
+    
     /// Default initializer
     init() {
         /// Get the current activity that is still tracking the time, after the app was closed
@@ -121,6 +139,9 @@ class FastingDataManager: ObservableObject {
             }
             self.favoriteRecipeIndex = favoriteRecipeIndex
         }
+        
+        userInfo = getUserInfo()
+        
         fetchPushNotificationsStatus()
     }
     

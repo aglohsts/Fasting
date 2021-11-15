@@ -63,13 +63,13 @@ struct SettingsTabView: View {
             GeneralSection
             Spacer(minLength: 30)
             
-//            Button(action: {
-//                showingUserInputView = true
-//            }, label: {
-//                /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
-//            }).sheet(isPresented: $showingUserInputView, content: {
-//                UserInfoInputView()
-//            })
+            Button(action: {
+                showingUserInputView = true
+            }, label: {
+                /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
+            }).sheet(isPresented: $showingUserInputView, content: {
+                UserInfoInputView(manager: manager, title: "User Info", buttonText: "Save")
+            })
         }
         .sheet(isPresented: $showAboutFastingView, content: {
             AboutFastingContentView()
@@ -89,7 +89,7 @@ struct SettingsTabView: View {
                     Text("")
                 }).labelsHidden()
             }
-            .padding([.leading, .trailing], 15).padding([.bottom], 10)
+            .padding([.leading, .trailing], 15).padding([.top, .bottom], 10)
             .background(Color(#colorLiteral(red: 0.9568627451, green: 0.9607843137, blue: 0.9607843137, alpha: 1)).cornerRadius(20)).padding([.leading, .trailing])
         }
     }
