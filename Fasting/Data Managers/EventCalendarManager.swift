@@ -2,7 +2,7 @@
 //  EventCalendarManager.swift
 //  Fasting
 //
-//  Created by Yu-chen chih on 2021/11/15.
+//  Created by lohsts on 2021/11/15.
 //
 
 import UIKit

@@ -2,7 +2,7 @@
 //  RecipeDetailContentView.swift
 //  Fasting
 //
-//  Created by Yu-chen chih on 2021/11/14.
+//  Created by lohsts on 2021/11/14.
 //
 
 import SwiftUI

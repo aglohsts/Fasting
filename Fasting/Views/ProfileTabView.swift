@@ -51,6 +51,8 @@ struct ProfileTabView: View {
         ScrollView {
             Divider().padding()
             ProfileUserView()
+            userInfoSection
+            Divider().padding()
             SettingSection
         }
     }
@@ -70,11 +72,37 @@ struct ProfileTabView: View {
                     }.foregroundColor(.black)
                 })
                 .navigationTitle("Settings")
-            .padding([.leading, .trailing], 15).padding([.top, .bottom], 10)
-            .background(Color(#colorLiteral(red: 0.9568627451, green: 0.9607843137, blue: 0.9607843137, alpha: 1)).cornerRadius(8)).padding([.leading, .trailing])
+                .padding([.leading, .trailing], 15).padding([.top, .bottom], 10)
+                .background(Color(#colorLiteral(red: 0.9568627451, green: 0.9607843137, blue: 0.9607843137, alpha: 1)).cornerRadius(8)).padding([.leading, .trailing])
+        }
+    }
+    
+    private var userInfoSection: some View {
+        VStack {
+            LazyVGrid(columns: columns, spacing: 10) {
+                ForEach((0...5), id: \.self, content: { _ in
+                    ZStack {
+    //                            LinearGradient(gradient: plan.planGradient, startPoint: .top, endPoint: .bottom)
+    //                                .mask(RoundedRectangle(cornerRadius: 20))
+                        HStack {
+                            Image(systemName: "heart.text.square.fill").padding()
+                            Text("Info").fontWeight(.light).opacity(0.5)
+                            Spacer()
+                        }
+                        .foregroundColor(.gray)
+                        .padding([.leading, .trailing])
+                        .padding([.top, .bottom], 16)
+                        .background(Color(#colorLiteral(red: 0.9568627451, green: 0.9607843137, blue: 0.9607843137, alpha: 1)))
+                        .cornerRadius(8)
+                    }
+                })
+            }
+            .padding([.leading, .trailing], 15)
             
         }
     }
+    
+    private let columns = [GridItem(.flexible(), spacing: 10), GridItem(.flexible(), spacing: 10)]
     
 //    private var userInputTestSection: some View {
 //
