@@ -82,6 +82,8 @@ class FastingDataManager: ObservableObject {
     @Published var userInfo: UserInfo = UserInfo()
     
     func saveUserInfo() {
+        print("\(userInfo.username) \(userInfo.age) \(userInfo.gender.rawValue)")
+//        if let encodedUserInfoData = try? NSKeyedArchiver.archivedData(withRootObject: userInfo) {
         if let encodedUserInfoData = try? JSONEncoder().encode(userInfo) {
             UserDefaults.standard.set(encodedUserInfoData, forKey: "userInfo")
             UserDefaults.standard.synchronize()
@@ -89,7 +91,8 @@ class FastingDataManager: ObservableObject {
     }
     
     func getUserInfo() -> UserInfo {
-        if let data = UserDefaults.standard.object(forKey: "userInfo") as? Data,
+        if let data = UserDefaults.standard.data(forKey: "userInfo"),
+//           let userInfo = NSKeyedUnarchiver.unarchivedObject(ofClass: UserInfo.self, from: data) {
             let userInfo = try? JSONDecoder().decode(UserInfo.self, from: data) {
             return userInfo
         }

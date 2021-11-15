@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,19 +15,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="PVo-xI-k2Q">
-                                <rect key="frame" x="140.5" y="381.5" width="133" height="133"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="PVo-xI-k2Q" secondAttribute="height" id="BUZ-U9-k5O"/>
-                                    <constraint firstAttribute="width" constant="133" id="MxW-vZ-3hD"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome_4" translatesAutoresizingMaskIntoConstraints="NO" id="DQU-2s-HHe">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="PVo-xI-k2Q" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Tql-L7-nAK"/>
-                            <constraint firstItem="PVo-xI-k2Q" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="vlQ-EF-HOP"/>
+                            <constraint firstAttribute="bottom" secondItem="DQU-2s-HHe" secondAttribute="bottom" id="4dx-60-dEh"/>
+                            <constraint firstItem="DQU-2s-HHe" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="LVK-xZ-7X0"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="DQU-2s-HHe" secondAttribute="trailing" id="eLY-6G-Vjd"/>
+                            <constraint firstItem="DQU-2s-HHe" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="u1k-P3-y6e"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -37,6 +35,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="774" height="774"/>
+        <image name="welcome_4" width="1668" height="2964"/>
     </resources>
 </document>

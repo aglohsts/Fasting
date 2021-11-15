@@ -32,8 +32,6 @@ enum TabBarItem: String, CaseIterable {
             return Image(systemName: "house.fill")
         case .analysis:
             return Image(systemName: "chart.bar.xaxis")
-//        case .settings:
-//            return Image(systemName: "gearshape.fill")
         case .profile:
             return Image(systemName: "person.crop.circle.fill")
         }

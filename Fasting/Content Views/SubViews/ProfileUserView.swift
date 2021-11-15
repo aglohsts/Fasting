@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ProfileUserView: View {
+    @ObservedObject var manager: FastingDataManager
+    @State var showingUserInputView = false
     var body: some View {
         HStack {
             Image(systemName: "person.circle.fill")
@@ -15,16 +17,24 @@ struct ProfileUserView: View {
                 .foregroundColor(.black)
                 .padding([.leading, .trailing], 16)
             VStack(alignment: .leading, spacing: 4, content:  {
-                Text("User")
+                Text((manager.userInfo.username == "") ? "User" : manager.userInfo.username)
                     .font(.title)
                     .bold()
                     .padding([.bottom], 4)
-                Text("Set User Name")
-                    .foregroundColor(.gray)
+                Button(action: {
+                    showingUserInputView = true
+                }, label: {
+                    HStack {
+                        Text((manager.userInfo.username == "") ? "Set User Info" : "Update User Info")
+                            .foregroundColor(.gray)
+                        Image(systemName: "square.and.pencil")
+                    }
+                }).sheet(isPresented: $showingUserInputView, content: {
+                    UserInfoInputView(manager: manager, title: "User Info", buttonText: "Save")
+                })
             })
             Spacer()
         }
-//        .padding([.leading, .trailing], 15)
         .padding([.top, .bottom], 10)
         .background(Color(#colorLiteral(red: 0.9568627451, green: 0.9607843137, blue: 0.9607843137, alpha: 1)).cornerRadius(8)).padding([.leading, .trailing])
     }
@@ -32,6 +42,6 @@ struct ProfileUserView: View {
 
 struct ProfileUserView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileUserView().previewLayout(.sizeThatFits)
+        ProfileUserView(manager: FastingDataManager()).previewLayout(.sizeThatFits)
     }
 }

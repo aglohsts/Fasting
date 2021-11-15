@@ -72,7 +72,6 @@ class FastingModel: ObservableObject {
     /// Formatted fasting end time
     func formattedFastingEndTime(plan: Plan) -> String {
         let fasting = Int(plan.content.rawValue)!
-        let eating = Int(plan.content.rawValue)!
         
         if UserDefaults.standard.double(forKey: "lastEntry_\(type.rawValue)") != 0.0 { // Date().timeIntervalSince1970
             let lastEntryDate = UserDefaults.standard.double(forKey: "lastEntry_\(type.rawValue)")
@@ -105,7 +104,6 @@ class FastingModel: ObservableObject {
     
     /// Eating window countdown
     func formattedCountdown(plan: Plan) -> String {
-        let fasting = Int(plan.content.rawValue)!
         let eating = Int(plan.content.rawValue)!
         
         let planEatingWindowSeconds = eating * 3600

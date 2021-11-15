@@ -10,11 +10,18 @@ import SwiftUI
 
 class UserInfo: ObservableObject, Codable {
     var username: String = ""
-    var gender = Gender.unknown
-    var age: Int?
-    var height: Double?
-    var weight: Double?
-    var fat: Double?
+    var gender = Gender.other
+    var age: String = ""
+    var height: String = ""
+    var weight: String = ""
+    var fat: String = ""
+    var bmi: String {
+        if height != "" && weight != "", let heightN = Float(height), let weightN = Float(weight) {
+            let bmiN = Int(weightN / (heightN / 100))^2
+            return String(bmiN)
+        }
+        return ""
+    }
     
     enum CodingKeys: String, CodingKey, CaseIterable {
         case username
@@ -23,6 +30,7 @@ class UserInfo: ObservableObject, Codable {
         case height
         case weight
         case fat
+        case bmi
     }
     
     func encode(to encoder: Encoder) throws {
@@ -33,17 +41,18 @@ class UserInfo: ObservableObject, Codable {
         try container.encode(height, forKey: CodingKeys.height)
         try container.encode(weight, forKey: CodingKeys.weight)
         try container.encode(fat, forKey: CodingKeys.fat)
+        try container.encode(bmi, forKey: CodingKeys.bmi)
     }
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         username = try values.decode(String.self, forKey: .username)
         let genderRawValue = try values.decode(String.self, forKey: .gender)
-        gender = Gender(rawValue: genderRawValue) ?? .unknown
-        age = try values.decode(Int.self, forKey: .age)
-        height = try values.decode(Double.self, forKey: .height)
-        weight = try values.decode(Double.self, forKey: .weight)
-        fat = try values.decode(Double.self, forKey: .fat)
+        gender = Gender(rawValue: genderRawValue) ?? .other
+        age = try values.decode(String.self, forKey: .age)
+        height = try values.decode(String.self, forKey: .height)
+        weight = try values.decode(String.self, forKey: .weight)
+        fat = try values.decode(String.self, forKey: .fat)
     }
     
     init() {
@@ -54,5 +63,5 @@ class UserInfo: ObservableObject, Codable {
 enum Gender: String {
     case male
     case female
-    case unknown
+    case other
 }

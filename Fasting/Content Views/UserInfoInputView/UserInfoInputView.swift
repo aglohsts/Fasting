@@ -16,7 +16,7 @@ struct UserInfoInputView: View {
     @State private var selectedGenderIndex = 0
     @State private var isGenderPickerShow = false
     
-    var genderOptions: [Gender] = [.unknown, .male, .female]
+    var genderOptions: [Gender] = [.other, .male, .female]
         
     var body: some View {
         NavigationView {
@@ -35,25 +35,33 @@ struct UserInfoInputView: View {
                             ForEach(0 ..< genderOptions.count) {
                                 Text(self.genderOptions[$0].rawValue).tag($0)
                             }
+                        }).onChange(of: selectedGenderIndex, perform: { value in
+                            manager.userInfo.gender = genderOptions[selectedGenderIndex]
                         })
                     }
                 }
                 
                 Section {
                     FormLabelView(titleText: "Age", iconSystemName: "clock.fill", backgroundColor: .blue)
-                    TextField("Please input your age.", value: $manager.userInfo.age, formatter: NumberFormatter())
+                    TextField("Please input your user age.", text: $manager.userInfo.age)
                         .keyboardType(.numberPad)
                 }
                 
                 Section {
-                    FormLabelView(titleText: "Height", iconSystemName: "ruler.fill", backgroundColor: .blue)
-                    TextField("Please input your height.", value: $manager.userInfo.height, formatter: NumberFormatter())
+                    FormLabelView(titleText: "Height (cm)", iconSystemName: "ruler.fill", backgroundColor: .blue)
+                    TextField("Please input your user height.", text: $manager.userInfo.height)
                         .keyboardType(.numberPad)
                 }
                 
                 Section {
-                    FormLabelView(titleText: "Weight", iconSystemName: "lineweight", backgroundColor: .blue)
-                    TextField("Please input your weight.", value: $manager.userInfo.height, formatter: NumberFormatter())
+                    FormLabelView(titleText: "Weight (kg)", iconSystemName: "lineweight", backgroundColor: .blue)
+                    TextField("Please input your user weight.", text: $manager.userInfo.weight)
+                        .keyboardType(.numberPad)
+                }
+                
+                Section {
+                    FormLabelView(titleText: "Fat (%)", iconSystemName: "deskclock.fill", backgroundColor: .blue)
+                    TextField("Please input your user fat %.", text: $manager.userInfo.fat)
                         .keyboardType(.numberPad)
                 }
             }
@@ -66,6 +74,15 @@ struct UserInfoInputView: View {
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
                         Text(buttonText)
+                    })
+                    
+                }
+                
+                ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Text("Cancel")
                     })
                     
                 }

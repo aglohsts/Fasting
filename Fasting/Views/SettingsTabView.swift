@@ -62,14 +62,6 @@ struct SettingsTabView: View {
             Divider().padding(30)
             GeneralSection
             Spacer(minLength: 30)
-            
-            Button(action: {
-                showingUserInputView = true
-            }, label: {
-                /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
-            }).sheet(isPresented: $showingUserInputView, content: {
-                UserInfoInputView(manager: manager, title: "User Info", buttonText: "Save")
-            })
         }
         .sheet(isPresented: $showAboutFastingView, content: {
             AboutFastingContentView()

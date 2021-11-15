@@ -252,7 +252,6 @@
 				7949FF8725CCC58A00210818 /* Sources */,
 				7949FF8825CCC58A00210818 /* Frameworks */,
 				7949FF8925CCC58A00210818 /* Resources */,
-				44EDEFCDEA9DC6F87FB88053 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -309,23 +308,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		44EDEFCDEA9DC6F87FB88053 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Fasting/Pods-Fasting-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Fasting/Pods-Fasting-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fasting/Pods-Fasting-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		920D53ACE603030F4B32A208 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
