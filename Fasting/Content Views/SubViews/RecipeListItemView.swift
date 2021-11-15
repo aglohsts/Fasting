@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct RecipeListItemView: View {
+    @ObservedObject var manager: FastingDataManager
     @StateObject var recipe: Recipe
+    var index: Int
 
     var body: some View {
         HStack(alignment: .top, spacing: 12.0) {
@@ -45,6 +47,15 @@ struct RecipeListItemView: View {
             VStack(alignment: .leading) {
                 Button(action: {
                     recipe.isFavorite.toggle()
+                    if recipe.isFavorite, !manager.favoriteRecipeIndex.contains(index) {
+                        manager.favoriteRecipeIndex.append(index)
+                    } else {
+                        if manager.favoriteRecipeIndex.contains(index) {
+                            manager.favoriteRecipeIndex.removeAll { favoriteIndex in
+                                return index == favoriteIndex
+                            }
+                        }
+                    }
                 }, label: {
                     recipe.isFavorite ? Image(systemName: "heart.fill").foregroundColor(.red) : Image(systemName: "heart").foregroundColor(.gray)
                 })
@@ -63,6 +74,6 @@ struct RecipeListItemView: View {
 
 struct RecipeListItemView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeListItemView(recipe:Recipe(imageName: "recipe_grilled_lemon_salmon", title: "GRILLED LEMON SALMON", description: "Having lemon in the name of the recipe really threw me, but it was fantastic! I served it alongside pineapple rice and fresh green beans, making it a very satisfying meal!", note: "Protein", source: "https://www.food.com/recipe/grilled-lemon-salmon-30469", meal: .lunchOrdinner))
+        RecipeListItemView(manager: FastingDataManager(), recipe:Recipe(imageName: "recipe_grilled_lemon_salmon", title: "GRILLED LEMON SALMON", description: "Having lemon in the name of the recipe really threw me, but it was fantastic! I served it alongside pineapple rice and fresh green beans, making it a very satisfying meal!", note: "Protein", source: "https://www.food.com/recipe/grilled-lemon-salmon-30469", meal: .lunchOrdinner), index: 0)
     }
 }

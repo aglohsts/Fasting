@@ -56,6 +56,13 @@ class FastingDataManager: ObservableObject {
         Recipe(imageName: "recipe_boiled_eggs", title: "THE EASIEST HARD BOILED EGGS", description: "I wanted to make deviled eggs for thanksgiving dinner but I usually don’t have very good success at boiling the eggs. I tried this method, and it worked out great! I did, however, have one problem - there wasn’t enough room on the platter for all the eggs that turned out wonderfully!", note: "Protein", source: "https://www.food.com/recipe/the-easiest-perfect-hard-boiled-eggs-technique-302972", meal: .breakfast),
     ]
     
+    @Published var favoriteRecipeIndex: [Int] = [] {
+        didSet {
+            UserDefaults.standard.setValue(favoriteRecipeIndex, forKey: "favoriteRecipeIndex")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
     @Published var planData: [Plan] = [
         Plan(content: .fourteen),
         Plan(content: .sixteen),
@@ -63,6 +70,13 @@ class FastingDataManager: ObservableObject {
         Plan(content: .twenty),
         Plan(content: .alternateDay),
     ]
+    
+    @Published var favoritePlanIndex: [Int] = [] {
+        didSet {
+            UserDefaults.standard.setValue(favoritePlanIndex, forKey: "favoritePlanIndex")
+            UserDefaults.standard.synchronize()
+        }
+    }
     
     /// Default initializer
     init() {
@@ -92,6 +106,20 @@ class FastingDataManager: ObservableObject {
             guard let plan = planData.first else { return }
             plan.isChosen = true
             currentPlan = plan
+        }
+        
+        if let favoritePlanIndex = UserDefaults.standard.array(forKey: "favoritePlanIndex") as? [Int] {
+            favoritePlanIndex.forEach { index in
+                planData[index].isFavorite = true
+            }
+            self.favoritePlanIndex = favoritePlanIndex
+        }
+        
+        if let favoriteRecipeIndex = UserDefaults.standard.array(forKey: "favoriteRecipeIndex") as? [Int] {
+            favoriteRecipeIndex.forEach { index in
+                recipeData[index].isFavorite = true
+            }
+            self.favoriteRecipeIndex = favoriteRecipeIndex
         }
         fetchPushNotificationsStatus()
     }

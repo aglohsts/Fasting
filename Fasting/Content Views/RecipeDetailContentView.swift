@@ -9,10 +9,12 @@ import SwiftUI
 import EventKit
 
 struct RecipeDetailContentView: View {
-    
+    @ObservedObject var manager: FastingDataManager
     @State var isAddingCalendar: Bool = false
     
     var recipe: Recipe
+    var index: Int
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10, content: {
@@ -22,8 +24,30 @@ struct RecipeDetailContentView: View {
                     .padding([.top, .leading, .trailing], 20)
                 
                 VStack(alignment: .leading, spacing: 10, content: {
-                    TagView(text: recipe.meal.rawValue.capitalized, textColor: .white, backgroundColor: .black)
-                        .padding([.top, .leading, .trailing], 20)
+                    
+                    HStack {
+                        TagView(text: recipe.meal.rawValue.capitalized, textColor: .white, backgroundColor: .black)
+                            .padding([.top, .leading, .trailing], 20)
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            recipe.isFavorite.toggle()
+                            if recipe.isFavorite, !manager.favoriteRecipeIndex.contains(index) {
+                                manager.favoriteRecipeIndex.append(index)
+                            } else {
+                                if manager.favoriteRecipeIndex.contains(index) {
+                                    manager.favoriteRecipeIndex.removeAll { favoriteIndex in
+                                        return index == favoriteIndex
+                                    }
+                                }
+                            }
+                        }, label: {
+                            recipe.isFavorite ? Image(systemName: "heart.fill").foregroundColor(.red) : Image(systemName: "heart").foregroundColor(.gray)
+                        })
+                        .background(Color.clear)
+                        .padding([.top, .trailing], 20)
+                    }
                     
                     recipe.image
                         .resizable()
@@ -72,6 +96,6 @@ struct RecipeDetailContentView: View {
 
 struct RecipeDetailContentView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeDetailContentView(recipe: Recipe(imageName: "recipe_sabudana_khichdi", title: "Sabudana Khichdi", description: "Sabudana ki khichdi is a delicious dish of tapioca pearls (sago) made with potatoes, peanuts and usually had during Hindu fasting days like Navratri, Ekadashi, mahashivratri. It is also a gluten free recipe. In this recipe post, you will get many tips and suggestions to make the best non-sticky sabudana khichdi. ", note: "Bread & Grains", source: "https://www.vegrecipesofindia.com/navratri-recipes-navratri-fasting-recipes", meal: .lunchOrdinner))
+        RecipeDetailContentView(manager: FastingDataManager(), recipe: Recipe(imageName: "recipe_sabudana_khichdi", title: "Sabudana Khichdi", description: "Sabudana ki khichdi is a delicious dish of tapioca pearls (sago) made with potatoes, peanuts and usually had during Hindu fasting days like Navratri, Ekadashi, mahashivratri. It is also a gluten free recipe. In this recipe post, you will get many tips and suggestions to make the best non-sticky sabudana khichdi. ", note: "Bread & Grains", source: "https://www.vegrecipesofindia.com/navratri-recipes-navratri-fasting-recipes", meal: .lunchOrdinner), index: 0)
     }
 }

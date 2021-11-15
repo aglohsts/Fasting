@@ -11,6 +11,7 @@ struct PlanListItemView: View {
     @ObservedObject var manager: FastingDataManager
     @State var isExpanded = false
     @StateObject var plan: Plan
+    var index: Int
     
     var body: some View {
         VStack(alignment: .center, spacing: 6, content: {
@@ -44,6 +45,15 @@ struct PlanListItemView: View {
                 
                 Button(action: {
                     plan.isFavorite.toggle()
+                    if plan.isFavorite, !manager.favoritePlanIndex.contains(index) {
+                        manager.favoritePlanIndex.append(index)
+                    } else {
+                        if manager.favoritePlanIndex.contains(index) {
+                            manager.favoritePlanIndex.removeAll { favoriteIndex in
+                                return index == favoriteIndex
+                            }
+                        }
+                    }
                 }, label: {
                     plan.isFavorite ? Image(systemName: "heart.fill").foregroundColor(.red) : Image(systemName: "heart.fill")
                         .foregroundColor(.gray.opacity(0.4))
@@ -161,6 +171,6 @@ struct PlanListItemView: View {
 
 struct PlanListItemView_Previews: PreviewProvider {
     static var previews: some View {
-        PlanListItemView(manager: FastingDataManager(), plan: Plan(content: .fourteen))
+        PlanListItemView(manager: FastingDataManager(), plan: Plan(content: .fourteen), index: 0)
     }
 }

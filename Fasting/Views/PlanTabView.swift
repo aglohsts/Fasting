@@ -15,8 +15,8 @@ struct PlanTabView: View {
     var body: some View {
         ScrollView {
             Divider().padding()
-            ForEach(manager.planData, content: { plan in
-                PlanListItemView(manager: manager, plan: plan)
+            ForEach(Array(manager.planData.enumerated()), id: \.offset, content: { index, plan in
+                PlanListItemView(manager: manager, plan: plan, index: index)
                     .padding([.leading, .trailing, .bottom])
             })
         }
