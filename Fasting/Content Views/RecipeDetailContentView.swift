@@ -73,17 +73,29 @@ struct RecipeDetailContentView: View {
                 })
                 .background(Color(#colorLiteral(red: 0.9408885837, green: 0.9492552876, blue: 0.9408323169, alpha: 1)))
                 .cornerRadius(10)
-                .padding([.leading, .trailing, .bottom])
+                .padding([.leading, .trailing])
+                .padding([.bottom], 8)
             })
             .navigationBarTitleDisplayMode(.inline)
-            
-            Spacer()
             
             Button(action: {
                 isAddingCalendar = true
             }, label: {
-                Text("Sync with Calendar")
+                HStack {
+                    Text("Sync with")
+                        .bold()
+                        .foregroundColor(.white)
+                        
+                    Image("icon_calendar")
+                        .resizable()
+                        .frame(width: 30, height: 30, alignment: .center)
+                }
+                
             })
+            .padding([.leading, .trailing], 16)
+            .padding([.top, .bottom], 8)
+            .background(Color.black)
+            .cornerRadius(23)
             
             Spacer()
         }
