@@ -24,6 +24,8 @@
 	<true/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Fasting needs to access your Calendar to add remider to it.</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>

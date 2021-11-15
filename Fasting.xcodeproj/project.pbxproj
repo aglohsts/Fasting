@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A084616274159FF00F024BC /* RecipeDetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A084615274159FF00F024BC /* RecipeDetailContentView.swift */; };
+		1A0846182741E1D300F024BC /* EventCalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0846172741E1D300F024BC /* EventCalendarManager.swift */; };
 		1A3B3B17272FF224001D4905 /* RecipeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B3B16272FF224001D4905 /* RecipeTabView.swift */; };
 		1A3B3B19272FF24C001D4905 /* ProfileTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B3B18272FF24C001D4905 /* ProfileTabView.swift */; };
 		1A3B3B1D27302E66001D4905 /* ProfileContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B3B1C27302E66001D4905 /* ProfileContentView.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		1A084615274159FF00F024BC /* RecipeDetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailContentView.swift; sourceTree = "<group>"; };
+		1A0846172741E1D300F024BC /* EventCalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCalendarManager.swift; sourceTree = "<group>"; };
 		1A3B3B16272FF224001D4905 /* RecipeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTabView.swift; sourceTree = "<group>"; };
 		1A3B3B18272FF24C001D4905 /* ProfileTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabView.swift; sourceTree = "<group>"; };
 		1A3B3B1C27302E66001D4905 /* ProfileContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContentView.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				7949FFA125CCCDD800210818 /* FastingDataManager.swift */,
+				1A0846172741E1D300F024BC /* EventCalendarManager.swift */,
 			);
 			path = "Data Managers";
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				1AF287D52738EFAC00472156 /* PlanListItemView.swift in Sources */,
 				7998ECEF25CEFF5200430E68 /* FastingTabView.swift in Sources */,
 				79462EE825D33410007E96C2 /* SettingsContentView.swift in Sources */,
+				1A0846182741E1D300F024BC /* EventCalendarManager.swift in Sources */,
 				1AF287DD273972DA00472156 /* ProfileUserView.swift in Sources */,
 				1AF287D12737BDBC00472156 /* SectionTitleView.swift in Sources */,
 				1AF287D72738FC3C00472156 /* TagView.swift in Sources */,

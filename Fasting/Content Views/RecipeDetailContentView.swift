@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import EventKit
 
 struct RecipeDetailContentView: View {
+    
+    @State var isAddingCalendar: Bool = false
     
     var recipe: Recipe
     var body: some View {
@@ -53,13 +56,16 @@ struct RecipeDetailContentView: View {
             Spacer()
             
             Button(action: {
-                
+                isAddingCalendar = true
             }, label: {
                 Text("Sync with Calendar")
             })
             
             Spacer()
         }
+        .sheet(isPresented: $isAddingCalendar, content: {
+            EKEventWrapper(isShowing: $isAddingCalendar, eventTitle: recipe.title, eventLink: recipe.source)
+        })
             
     }
 }
