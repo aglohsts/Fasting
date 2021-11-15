@@ -6,6 +6,6 @@ target 'Fasting' do
   use_frameworks!
 
   # Pods for Fasting
-  pod 'Google-Mobile-Ads-SDK'
+  # pod 'Google-Mobile-Ads-SDK'
 
 end
