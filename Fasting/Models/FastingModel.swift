@@ -71,19 +71,33 @@ class FastingModel: ObservableObject {
     
     /// Formatted fasting end time
     func formattedFastingEndTime(plan: Plan) -> String {
-        if !fastingEndTime.isEmpty { return fastingEndTime }
-        
         let fasting = Int(plan.content.rawValue)!
         let eating = Int(plan.content.rawValue)!
-        let total = fasting + eating
+        
+        if UserDefaults.standard.double(forKey: "lastEntry_\(type.rawValue)") != 0.0 { // Date().timeIntervalSince1970
+            let lastEntryDate = UserDefaults.standard.double(forKey: "lastEntry_\(type.rawValue)")
+            let startDateTime = Date(timeIntervalSince1970: lastEntryDate)
+            let startDateComponents = Calendar.current.dateComponents([.day, .hour, .minute], from: startDateTime)
+            
+            let endDateTime = Calendar.current.date(byAdding: .hour, value: fasting, to: startDateTime)
+            let endDateComponents = Calendar.current.dateComponents([.day, .hour, .minute], from: endDateTime!)
+            
+            return countEndFastingTime(startDateComponents: startDateComponents, endDateComponents: endDateComponents, endDateTime: endDateTime)
+        }
         
         let endDateTime = Calendar.current.date(byAdding: .hour, value: fasting, to: Date())
-        let components = Calendar.current.dateComponents([.day, .hour, .minute], from: endDateTime!)
+        let endDateComponents = Calendar.current.dateComponents([.day, .hour, .minute], from: endDateTime!)
         let currentDateComponents = Calendar.current.dateComponents([.day, .hour, .minute], from: Date())
-        let dayFastingEnds = (components.day ?? 0 > currentDateComponents.day ?? 0) ? "tomorrow" : "today"
+
+        return countEndFastingTime(startDateComponents: currentDateComponents, endDateComponents: endDateComponents, endDateTime: endDateTime)
+    }
+    
+    private func countEndFastingTime(startDateComponents: DateComponents, endDateComponents: DateComponents, endDateTime: Date?) -> String {
+        let dayFastingEnds = (endDateComponents.day ?? 0 > startDateComponents.day ?? 0) ? "tomorrow" : "today"
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "hh:mma"
-        fastingEndTime = "\(dayFastingEnds) \(dateFormatter.string(from: endDateTime!))"
+        guard let endDateTime = endDateTime else { return dayFastingEnds }
+        fastingEndTime = "\(dayFastingEnds) \(dateFormatter.string(from: endDateTime))"
         UserDefaults.standard.setValue(fastingEndTime, forKey: "fastingEndTime")
         UserDefaults.standard.synchronize()
         return fastingEndTime
@@ -93,7 +107,6 @@ class FastingModel: ObservableObject {
     func formattedCountdown(plan: Plan) -> String {
         let fasting = Int(plan.content.rawValue)!
         let eating = Int(plan.content.rawValue)!
-        let total = fasting + eating
         
         let planEatingWindowSeconds = eating * 3600
         let elapsedTime = planEatingWindowSeconds - secondsTracked

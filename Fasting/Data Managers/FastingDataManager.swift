@@ -154,7 +154,7 @@ class FastingDataManager: ObservableObject {
     /// Setup push notification daily reminder
     private func setupPushNotificationsReminder() {
         if UserDefaults.standard.bool(forKey: "didScheduleNotification") { return }
-        guard let timeFastEnds = Calendar.current.date(byAdding: .hour, value: AppConfig.notificationTestMode ? 0 : Int(currentFastingPlan.rawValue)!, to: Date()) else { return }
+        guard let timeFastEnds = Calendar.current.date(byAdding: .hour, value: AppConfig.notificationTestMode ? 0 : Int(currentPlan.content.rawValue)!, to: Date()) else { return }
         guard let date = Calendar.current.date(byAdding: AppConfig.notificationTestMode ? .second : .minute,
                                                value: AppConfig.notificationTestMode ? 10 : -AppConfig.notificationBeforeFastEnds, to: timeFastEnds) else { return }
         let content = UNMutableNotificationContent()

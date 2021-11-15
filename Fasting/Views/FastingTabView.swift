@@ -48,7 +48,9 @@ struct FastingTabView: View {
                             Text(":").font(.system(size: 35)).padding(.bottom, 6)
                             Text(String(format: "%02d", manager.fastingModel.timeComponents.s))
                                 .font(.system(size: 40)).bold().lineLimit(1).minimumScaleFactor(0.5).frame(width: 60)
-                        }.multilineTextAlignment(.center)
+                        }
+                        .multilineTextAlignment(.center)
+                        .padding([.top], 10)
                         
                         VStack {
                             Image(systemName: manager.isTracking ? "flame.fill" : "bolt.fill")

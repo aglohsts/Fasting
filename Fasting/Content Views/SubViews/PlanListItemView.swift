@@ -29,6 +29,7 @@ struct PlanListItemView: View {
                         }
                         plan.isChosen.toggle()
                         manager.currentPlan = plan
+                        UINotificationFeedbackGenerator().notificationOccurred(.success)
                     }
                 }, label: {
                     Image(systemName: "checkmark")
@@ -106,6 +107,7 @@ struct PlanListItemView: View {
                     
                     plan.isChosen.toggle()
                     manager.currentPlan = plan
+                    UINotificationFeedbackGenerator().notificationOccurred(.success)
                 }, label: {
                     if !plan.isChosen {
                         TagView(text: "Choose")
