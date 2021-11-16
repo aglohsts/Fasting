@@ -10,7 +10,8 @@ import EventKit
 
 struct RecipeDetailContentView: View {
     @ObservedObject var manager: FastingDataManager
-    @State var isAddingCalendar: Bool = false
+    @State private var isAddingCalendar: Bool = false
+    @State private var isShowingAlert = false
     
     var recipe: Recipe
     var index: Int
@@ -18,15 +19,11 @@ struct RecipeDetailContentView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10, content: {
-                Text(recipe.title)
-                    .font(.title)
-                    .bold()
-                    .padding([.top, .leading, .trailing], 20)
-                
-                VStack(alignment: .leading, spacing: 10, content: {
-                    
-                    HStack {
-                        TagView(text: recipe.meal.rawValue.capitalized, textColor: .white, backgroundColor: .black)
+                VStack(alignment: .leading, spacing: 10, content: {                    
+                    HStack(alignment: .top, spacing: 10) {
+                        Text(recipe.title)
+                            .font(.title)
+                            .bold()
                             .padding([.top, .leading, .trailing], 20)
                         
                         Spacer()
@@ -48,6 +45,9 @@ struct RecipeDetailContentView: View {
                         .background(Color.clear)
                         .padding([.top, .trailing], 20)
                     }
+                    
+                    TagView(text: recipe.meal.rawValue.capitalized, textColor: .white, backgroundColor: .black)
+                        .padding([.leading, .trailing], 20)
                     
                     recipe.image
                         .resizable()
@@ -76,10 +76,11 @@ struct RecipeDetailContentView: View {
                 .padding([.leading, .trailing])
                 .padding([.bottom], 8)
             })
-            .navigationBarTitleDisplayMode(.inline)
             
             Button(action: {
-                isAddingCalendar = true
+                accesscalender(completion: {
+                    isAddingCalendar = true
+                })
             }, label: {
                 HStack {
                     Text("Sync with")
@@ -102,7 +103,26 @@ struct RecipeDetailContentView: View {
         .sheet(isPresented: $isAddingCalendar, content: {
             EKEventWrapper(isShowing: $isAddingCalendar, eventTitle: recipe.title, eventLink: recipe.source)
         })
+        .alert(isPresented: $isShowingAlert, content: {
+            Alert(title: Text("Fasting Mesasge"),
+                  message: Text("Please allow Fasting to access your Calendar to sync recipe schedule."),
+                  primaryButton: Alert.Button.default(Text("OK"), action: {
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                  }),
+                  secondaryButton: Alert.Button.cancel())
+        })
             
+    }
+    
+    func accesscalender(completion: @escaping (() -> ())) {
+        eventStore.requestAccess(to: EKEntityType.event,completion:
+                   {(granted, error) in
+                if !granted {
+                    isShowingAlert = true
+                } else {
+                    completion()
+                }
+        })
     }
 }
 

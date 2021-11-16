@@ -100,14 +100,6 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
-		1A7B6B6D271C411E001E9275 /* UserInfoInputView */ = {
-			isa = PBXGroup;
-			children = (
-				1A7B6B68271BF79E001E9275 /* UserInfoInputView.swift */,
-			);
-			path = UserInfoInputView;
-			sourceTree = "<group>";
-		};
 		7908673D25D0572A00E97CC9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,7 +179,7 @@
 				79462EE725D33410007E96C2 /* SettingsContentView.swift */,
 				1A3B3B1C27302E66001D4905 /* ProfileContentView.swift */,
 				1A084615274159FF00F024BC /* RecipeDetailContentView.swift */,
-				1A7B6B6D271C411E001E9275 /* UserInfoInputView */,
+				1A7B6B68271BF79E001E9275 /* UserInfoInputView.swift */,
 			);
 			path = "Content Views";
 			sourceTree = "<group>";

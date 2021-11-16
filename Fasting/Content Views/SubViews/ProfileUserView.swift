@@ -30,7 +30,10 @@ struct ProfileUserView: View {
                         Image(systemName: "square.and.pencil")
                     }
                 }).sheet(isPresented: $showingUserInputView, content: {
-                    UserInfoInputView(manager: manager, title: "User Info", buttonText: "Save")
+                    NavigationView {
+                        UserInfoInputView(manager: manager, title: "User Info", buttonText: "Save")
+                    }
+                    
                 })
             })
             Spacer()

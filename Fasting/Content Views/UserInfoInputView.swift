@@ -19,7 +19,6 @@ struct UserInfoInputView: View {
     var genderOptions: [Gender] = [.other, .male, .female]
         
     var body: some View {
-//        NavigationView {
             Form {
                 Section {
                     FormLabelView(titleText: "User Name", iconSystemName: "person.fill", backgroundColor: .blue)
@@ -82,17 +81,6 @@ struct UserInfoInputView: View {
                     .disabled(!manager.userInfo.checkInputDone())
                 }
             }
-//
-//                ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
-//                    Button(action: {
-//                        presentationMode.wrappedValue.dismiss()
-//                    }, label: {
-//                        Text("Cancel")
-//                    })
-//
-//                }
-//            }
-//        }
     }
 }
 

@@ -10,7 +10,6 @@ import SwiftUI
 struct RecipeTabView: View {
     @ObservedObject var manager: FastingDataManager
     
-    
     var body: some View {
         ScrollView {
             Divider()
@@ -21,7 +20,7 @@ struct RecipeTabView: View {
                         destination: RecipeDetailContentView(manager: manager, recipe: recipe, index: index),
                         label: {
                             RecipeListItemView(manager: manager, recipe: recipe, index: index)
-                        }).navigationTitle(recipe.title)
+                        })
                 }
             }
         }

@@ -9,13 +9,7 @@ import SwiftUI
 import Foundation
 
 /// Basic app configurations
-class AppConfig: NSObject {
-
-    /// This is the AdMob Interstitial ad id
-    /// Test App ID: ca-app-pub-3940256099942544~1458002511
-    /// Test Interstitial ID: ca-app-pub-3940256099942544/4411468910
-    static let adMobAdID: String = "ca-app-pub-3940256099942544/4411468910"
-    
+class AppConfig: NSObject {    
     /// Show/Hide logs while developing/debugging
     static let showLogs: Bool = true
     
