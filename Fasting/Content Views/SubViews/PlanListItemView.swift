@@ -9,9 +9,11 @@ import SwiftUI
 
 struct PlanListItemView: View {
     @ObservedObject var manager: FastingDataManager
-    @State var isExpanded = false
     @StateObject var plan: Plan
     var index: Int
+    
+    @State private var isExpanded = false
+    @State private var isShowingChangePlanAlert = false
     
     var body: some View {
         VStack(alignment: .center, spacing: 6, content: {
@@ -23,18 +25,9 @@ struct PlanListItemView: View {
                 
                 Button(action: {
                     if !plan.isChosen {
-                        manager.planData.forEach {
-                            if $0.isChosen {
-                                $0.isChosen = false
-                            }
-                        }
+                        isShowingChangePlanAlert = true
+                    } else {
                         plan.isChosen.toggle()
-                        if manager.isTracking {
-                            manager.stopTrackingActivityTime()
-                            manager.clearTrackingTime()
-                        }
-                        manager.currentPlan = plan
-                        UINotificationFeedbackGenerator().notificationOccurred(.success)
                     }
                 }, label: {
                     Image(systemName: "checkmark")
@@ -68,6 +61,25 @@ struct PlanListItemView: View {
                 .clipShape(Circle())
                 .padding([.top, .trailing])
             }
+            .alert(isPresented: $isShowingChangePlanAlert, content: {
+                Alert(title: Text("Fasting Mesasge"),
+                      message: Text("Note that if you change plan, ongoing plan will be stop."),
+                      primaryButton: Alert.Button.default(Text("OK"), action: {
+                        manager.planData.forEach {
+                            if $0.isChosen {
+                                $0.isChosen = false
+                            }
+                        }
+                        plan.isChosen.toggle()
+                        if manager.isTracking {
+                            manager.stopTrackingActivityTime()
+                            manager.clearTrackingTime()
+                        }
+                        manager.currentPlan = plan
+                        UINotificationFeedbackGenerator().notificationOccurred(.success)
+                      }),
+                      secondaryButton: Alert.Button.cancel())
+            })
             
             HStack {
                 Text(plan.name)

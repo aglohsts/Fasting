@@ -11,7 +11,7 @@ import EventKit
 struct RecipeDetailContentView: View {
     @ObservedObject var manager: FastingDataManager
     @State private var isAddingCalendar: Bool = false
-    @State private var isShowingAlert = false
+    @State private var isShowingCalendarAlert = false
     
     var recipe: Recipe
     var index: Int
@@ -19,7 +19,7 @@ struct RecipeDetailContentView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10, content: {
-                VStack(alignment: .leading, spacing: 10, content: {                    
+                VStack(alignment: .leading, spacing: 10, content: {
                     HStack(alignment: .top, spacing: 10) {
                         Text(recipe.title)
                             .font(.title)
@@ -103,22 +103,21 @@ struct RecipeDetailContentView: View {
         .sheet(isPresented: $isAddingCalendar, content: {
             EKEventWrapper(isShowing: $isAddingCalendar, eventTitle: recipe.title, eventLink: recipe.source)
         })
-        .alert(isPresented: $isShowingAlert, content: {
+        .alert(isPresented: $isShowingCalendarAlert, content: {
             Alert(title: Text("Fasting Mesasge"),
                   message: Text("Please allow Fasting to access your Calendar to sync recipe schedule."),
                   primaryButton: Alert.Button.default(Text("OK"), action: {
                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
                   }),
                   secondaryButton: Alert.Button.cancel())
-        })
-            
+        })            
     }
     
     func accesscalender(completion: @escaping (() -> ())) {
         eventStore.requestAccess(to: EKEntityType.event,completion:
                    {(granted, error) in
                 if !granted {
-                    isShowingAlert = true
+                    isShowingCalendarAlert = true
                 } else {
                     completion()
                 }

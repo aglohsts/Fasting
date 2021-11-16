@@ -16,6 +16,7 @@ struct FastingTabView: View {
     private let stopButtonGradient = Gradient(colors: [Color(#colorLiteral(red: 0.9529411793, green: 0.2524331993, blue: 0.1333333403, alpha: 1)), Color(#colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1))])
     private let progressGradient = Gradient(colors: [Color(#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)), Color(#colorLiteral(red: 0.9254902005, green: 0.5077413016, blue: 0.1019607857, alpha: 1))])
     
+    @State private var isShowingStopAlert = false
     // MARK: - Main rendering function
     var body: some View {
         ScrollView {
@@ -106,13 +107,21 @@ struct FastingTabView: View {
                     
                     Button(action: {
                         UINotificationFeedbackGenerator().notificationOccurred(.success)
-                        manager.isTracking ? manager.stopTrackingActivityTime() : manager.startTrackingActivityTime()
+                        manager.isTracking ? isShowingStopAlert = true : manager.startTrackingActivityTime()
                     }, label: {
                         Text(manager.isTracking ? "STOP" : "START").bold().padding([.leading, .trailing], 20).padding([.top, .bottom], 8).foregroundColor(.white)
                             .background(
                                 LinearGradient(gradient: manager.isTracking ? stopButtonGradient : startButtonGradient, startPoint: .topLeading, endPoint: .bottomTrailing)
                                     .mask(RoundedRectangle(cornerRadius: 15))
                             )
+                    })
+                    .alert(isPresented: $isShowingStopAlert, content: {
+                        Alert(title: Text("Fasting Mesasge"),
+                              message: Text("Are you sure that you want to stop fasting?"),
+                              primaryButton: Alert.Button.default(Text("Yes"), action: {
+                                manager.stopTrackingActivityTime()
+                              }),
+                              secondaryButton: Alert.Button.cancel())
                     })
                     
                     Spacer()
