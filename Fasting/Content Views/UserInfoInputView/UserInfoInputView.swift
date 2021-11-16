@@ -19,7 +19,7 @@ struct UserInfoInputView: View {
     var genderOptions: [Gender] = [.other, .male, .female]
         
     var body: some View {
-        NavigationView {
+//        NavigationView {
             Form {
                 Section {
                     FormLabelView(titleText: "User Name", iconSystemName: "person.fill", backgroundColor: .blue)
@@ -43,51 +43,56 @@ struct UserInfoInputView: View {
                 
                 Section {
                     FormLabelView(titleText: "Age", iconSystemName: "clock.fill", backgroundColor: .blue)
-                    TextField("Please input your user age.", text: $manager.userInfo.age)
+                    TextField("Please input your age.", text: $manager.userInfo.age)
                         .keyboardType(.numberPad)
                 }
                 
                 Section {
                     FormLabelView(titleText: "Height (cm)", iconSystemName: "ruler.fill", backgroundColor: .blue)
-                    TextField("Please input your user height.", text: $manager.userInfo.height)
+                    TextField("Please input your height.", text: $manager.userInfo.height)
                         .keyboardType(.numberPad)
                 }
                 
                 Section {
                     FormLabelView(titleText: "Weight (kg)", iconSystemName: "lineweight", backgroundColor: .blue)
-                    TextField("Please input your user weight.", text: $manager.userInfo.weight)
+                    TextField("Please input your weight.", text: $manager.userInfo.weight)
                         .keyboardType(.numberPad)
                 }
                 
                 Section {
                     FormLabelView(titleText: "Fat (%)", iconSystemName: "deskclock.fill", backgroundColor: .blue)
-                    TextField("Please input your user fat %.", text: $manager.userInfo.fat)
+                    TextField("Please input your fat %.", text: $manager.userInfo.fat)
                         .keyboardType(.numberPad)
                 }
             }
             .navigationTitle(Text(title))
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
                     Button(action: {
+                        if !manager.didShowWelcomePage {
+                            manager.didShowWelcomePage = true
+                        }
+                        
                         manager.saveUserInfo()
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
                         Text(buttonText)
                     })
-                    
-                }
-                
-                ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Text("Cancel")
-                    })
-                    
+                    .disabled(!manager.userInfo.checkInputDone())
                 }
             }
-        }
+//
+//                ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
+//                    Button(action: {
+//                        presentationMode.wrappedValue.dismiss()
+//                    }, label: {
+//                        Text("Cancel")
+//                    })
+//
+//                }
+//            }
+//        }
     }
 }
 

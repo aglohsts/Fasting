@@ -19,7 +19,7 @@ class FastingDataManager: ObservableObject {
     
     /// These properties are dynamic and will invoke UI changes
     @Published var modalScreenType: ModalScreenType?
-    @Published var selectedAnswer: QuestionnaireAnswer?
+//    @Published var selectedAnswer: QuestionnaireAnswer?
     @Published var fastingModel: FastingModel = FastingModel(type: .fasting)
     @Published var notFastingModel: FastingModel = FastingModel(type: .notFasting)
     @Published var isTracking: Bool = false
@@ -41,9 +41,9 @@ class FastingDataManager: ObservableObject {
         didSet { savePushNotificationsStatus(notificationsStatus) }
     }
     
-    @Published var didShowQuestionnaire: Bool = UserDefaults.standard.bool(forKey: "didShowQuestionnaire") {
+    @Published var didShowWelcomePage: Bool = UserDefaults.standard.bool(forKey: "didShowWelcomePage") {
         didSet {
-            UserDefaults.standard.setValue(didShowQuestionnaire, forKey: "didShowQuestionnaire")
+            UserDefaults.standard.setValue(didShowWelcomePage, forKey: "didShowWelcomePage")
             UserDefaults.standard.synchronize()
         }
     }

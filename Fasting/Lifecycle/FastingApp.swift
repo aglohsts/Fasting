@@ -19,11 +19,11 @@ struct FastingApp: App {
 //        GADMobileAds.sharedInstance().start(completionHandler: nil)
         return WindowGroup {
             VStack {
-                if !manager.didShowQuestionnaire {
+//                if !manager.didShowQuestionnaire {
                     WelcomeContentView(manager: manager)
-                } else {
-                    DashboardContentView(manager: manager)
-                }
+//                } else {
+//                    DashboardContentView(manager: manager)
+//                }
             }
             .sheet(item: $manager.modalScreenType, content: { screenType in
                 switch screenType {

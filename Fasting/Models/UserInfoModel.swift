@@ -23,6 +23,10 @@ class UserInfo: ObservableObject, Codable {
         return ""
     }
     
+    func checkInputDone() -> Bool {
+        return username != "" && age != "" && height != "" && weight != "" && fat != ""
+    }
+    
     enum CodingKeys: String, CodingKey, CaseIterable {
         case username
         case gender

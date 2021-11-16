@@ -11,32 +11,47 @@ import SwiftUI
 struct WelcomeContentView: View {
     
     @ObservedObject var manager: FastingDataManager
-    @State private var isQuestionnaireActive: Bool = false
+    let welcomeImageList: [String] = ["welcome_1", "welcome_2", "welcome_3", "welcome_4"]
+    @State private var index: Int = 0
     
     // MARK: - Main rendering function
     var body: some View {
         NavigationView {
-            VStack(spacing: 10) {
-                NavigationLink(destination: QuestionnaireContentView(manager: manager),
-                               isActive: $isQuestionnaireActive, label: { EmptyView() })
-                Spacer()
-                Image("fasting_illustration").resizable().aspectRatio(contentMode: .fit)
-                Spacer()
-                Text("Stop dieting.\nStart Fasting Today").font(.largeTitle).bold()
-                Text("Weight loss and self-care has never been this easy and simple.")
-                Button(action: {
-                    isQuestionnaireActive = true
-                }, label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 25)
-                        Text("Get Started").foregroundColor(.white).bold()
+            ZStack {
+                TabView(selection: $index,
+                        content:  {
+                            ForEach(0...welcomeImageList.count - 1, id: \.self) { index in
+                                imageView(welcomeImageList[index]).tag(index)
+                            }
+                        })
+                        .tabViewStyle(PageTabViewStyle())
+                
+                if index == (welcomeImageList.count - 1) {
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            NavigationLink(
+                                destination: UserInfoInputView(manager: manager, title: "About You", buttonText: "Done"),
+                                label: {
+                                    Text("Get Started")
+                                        .foregroundColor(.white).bold()
+                                        .background(Color.accentColor)
+                                })
+                        }
                     }
-                }).frame(height: 50).padding(.top, 40)
+                    .padding([.trailing, .bottom], 20)
+                }
             }
-            .navigationBarTitle("", displayMode: .large)
-            .multilineTextAlignment(.center)
-            .padding(40)
+            .navigationBarHidden(true)
+            .background(Color(#colorLiteral(red: 0.9215561748, green: 0.6769378781, blue: 0.7386118174, alpha: 1)))
+            .ignoresSafeArea()
         }
+    }
+    
+    private func imageView(_ name: String) -> some View {
+        Image(name)
+            .resizable(capInsets: EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0), resizingMode: .stretch)
     }
 }
 
