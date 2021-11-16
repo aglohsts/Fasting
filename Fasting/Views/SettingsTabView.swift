@@ -63,6 +63,7 @@ struct SettingsTabView: View {
             GeneralSection
             Spacer(minLength: 30)
         }
+        .navigationTitle("Settings")
         .sheet(isPresented: $showAboutFastingView, content: {
             AboutFastingContentView()
         })

@@ -104,7 +104,7 @@ class FastingModel: ObservableObject {
     
     /// Eating window countdown
     func formattedCountdown(plan: Plan) -> String {
-        let eating = Int(plan.content.rawValue)!
+        let eating = plan.content.totalHours - Int(plan.content.rawValue)!
         
         let planEatingWindowSeconds = eating * 3600
         let elapsedTime = planEatingWindowSeconds - secondsTracked

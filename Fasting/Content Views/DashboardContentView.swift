@@ -59,18 +59,6 @@ struct DashboardContentView: View {
             }
             .navigationBarTitle(selectedTab.tabTitle)
         }
-//        .onAppear(perform: {
-//            if manager.selectedAnswer == .newbie {
-//                manager.modalScreenType = .aboutFasting
-//                manager.selectedAnswer = nil
-//            }
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                if !didShowAds {
-//                    didShowAds = true
-////                    interstitial.showInterstitialAds()
-//                }
-//            }
-//        })
     }
     
     /// Create tab bar item

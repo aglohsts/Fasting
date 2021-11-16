@@ -34,7 +34,6 @@ struct ProfileTabView: View {
                             
                     }.foregroundColor(.black)
                 })
-                .navigationTitle("Settings")
                 .padding([.leading, .trailing], 15).padding([.top, .bottom], 10)
                 .background(Color(#colorLiteral(red: 0.9568627451, green: 0.9607843137, blue: 0.9607843137, alpha: 1)).cornerRadius(8)).padding([.leading, .trailing])
         }

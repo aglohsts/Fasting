@@ -21,6 +21,8 @@ struct RecipeTabView: View {
                         label: {
                             RecipeListItemView(manager: manager, recipe: recipe, index: index)
                         })
+                        .isDetailLink(false)
+//                        .navigationViewStyle(StackNavigationViewStyle())
                 }
             }
         }
