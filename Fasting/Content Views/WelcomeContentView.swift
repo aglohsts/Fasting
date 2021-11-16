@@ -29,18 +29,20 @@ struct WelcomeContentView: View {
                 if index == (welcomeImageList.count - 1) {
                     VStack {
                         Spacer()
-                        HStack {
-                            Spacer()
-                            NavigationLink(
-                                destination: UserInfoInputView(manager: manager, title: "About You", buttonText: "Done"),
-                                label: {
-                                    Text("Get Started")
-                                        .foregroundColor(.white).bold()
-                                        .background(Color.accentColor)
-                                })
-                        }
+                        NavigationLink(
+                            destination: UserInfoInputView(manager: manager, title: "About You", buttonText: "Done"),
+                            label: {
+                                Text("Get Started")
+                                    .foregroundColor(.accentColor)
+                                    .bold()
+                                    .padding([.leading, .trailing], 16)
+                                    .padding([.top, .bottom], 8)
+                                    .background(Color.white)
+                                    .cornerRadius(20)
+                            }
+                        )
                     }
-                    .padding([.trailing, .bottom], 20)
+                    .padding([.bottom], UIScreen.main.bounds.height * 0.07)
                 }
             }
             .navigationBarHidden(true)

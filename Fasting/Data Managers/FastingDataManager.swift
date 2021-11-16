@@ -203,6 +203,12 @@ class FastingDataManager: ObservableObject {
         })
     }
     
+    // for change plan
+    func clearTrackingTime() {
+        notFastingModel.stopTimeTracking()
+        fastingModel.stopTimeTracking()
+    }
+    
     /// Setup push notification daily reminder
     private func setupPushNotificationsReminder() {
         if UserDefaults.standard.bool(forKey: "didScheduleNotification") { return }

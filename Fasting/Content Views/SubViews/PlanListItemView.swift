@@ -29,6 +29,10 @@ struct PlanListItemView: View {
                             }
                         }
                         plan.isChosen.toggle()
+                        if manager.isTracking {
+                            manager.stopTrackingActivityTime()
+                            manager.clearTrackingTime()
+                        }
                         manager.currentPlan = plan
                         UINotificationFeedbackGenerator().notificationOccurred(.success)
                     }
@@ -165,7 +169,6 @@ struct PlanListItemView: View {
             LinearGradient(gradient: plan.gradient, startPoint: .top, endPoint: .bottom)
                 .mask(RoundedRectangle(cornerRadius: 30))
         )
-        
     }
 }
 

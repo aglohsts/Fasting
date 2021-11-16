@@ -55,17 +55,21 @@ struct FastingTabView: View {
                         VStack {
                             Image(systemName: manager.isTracking ? "flame.fill" : "bolt.fill")
                                 .font(.system(size: 30, weight: .bold, design: .default))
+                                .foregroundColor(.accentColor)
                             
                             HStack {
                                 Text("ends")
                                     .font(.system(size: 14))
+                                    .foregroundColor(.accentColor)
                                 
                                 if manager.isTracking {
                                     Text("\(manager.fastingModel.formattedFastingEndTime(plan: manager.currentPlan))")
                                         .font(.system(size: 14))
+                                        .foregroundColor(.accentColor)
                                 } else {
                                     Text("\(manager.notFastingModel.formattedCountdown(plan: manager.currentPlan))")
                                         .font(.system(size: 14))
+                                        .foregroundColor(.accentColor)
                                 }
                             }
                         }
